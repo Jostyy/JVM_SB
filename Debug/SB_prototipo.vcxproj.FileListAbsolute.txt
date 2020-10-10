@@ -1,0 +1,2 @@
+D:\UnB\Software Básico\Trabalhos\Protótipo\SB_prototipo\Debug\SB_prototipo.exe
+D:\UnB\Software Básico\Trabalhos\Protótipo\SB_prototipo\Debug\SB_prototipo.pdb
