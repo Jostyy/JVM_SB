@@ -1,8 +1,5 @@
-/** \file methods.h
-*	\brief
-*/
-#ifndef METHOD
-#define METHOD
+#ifndef METHOD_H
+#define METHOD_H
 
 #include "baseTypes.h"
 #include "constantPool.h"

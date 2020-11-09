@@ -1,9 +1,4 @@
-/**
- * @file heap.cpp
- * 
- */
-
-#include "heap.h"
+#include "../include/heap.h"
 
 vector<ClasseInstancia*> Heap::objetos;
 

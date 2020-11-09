@@ -1,8 +1,4 @@
-/*!
- * \file operacoes.cpp
- * \brief 
- */
-#include "operacoes.h"
+#include "../include/operacoes.h"
 
 frame *Operacoes::f = nullptr;
 stack<struct frame_s*> *Operacoes::threads = nullptr;
@@ -240,137 +236,114 @@ void Operacoes::setFrame(struct frame_s *newRef)
 	f = newRef;
 }
 
-void Operacoes::setThreads(stack<struct frame_s*> *t)
-{
+void Operacoes::setThreads(stack<struct frame_s*> *t){
 	threads = t;
 }
 
-void Operacoes::setFrameStack(FrameStack* newFS)
-{
+void Operacoes::setFrameStack(FrameStack* newFS){
 	fs = newFS;
 }
 
-void Operacoes::run(int opcode)
-{
+void Operacoes::run(int opcode){
 	functions[opcode] ();
 }
 
-// Do nothing
-void Operacoes::nop ()
-{
+void Operacoes::nop (){
 }
 
-// Push in the a null reference (0) to the operands stack
 void Operacoes::aconst_null ()
 {
 	f->operandos->push((int*)(nullptr));
 }
 
-// Push (int) -1 to the operands stack
 void Operacoes::iconst_m1 ()
 {
 	f->operandos->push(int(-1));
 }
 
-// Push (int) 0 to the operands stack
 void Operacoes::iconst_0 ()
 {
 	f->operandos->push(int(0));
 }
 
-// Push (int) 1 to the operands stack
 void Operacoes::iconst_1 ()
 {
 	f->operandos->push(int(1));
 }
 
-// Push (int) 2 to the operands stack
 void Operacoes::iconst_2 ()
 {
 	f->operandos->push(int(2));
 }
 
-// Push (int) 3 to the operands stack
 void Operacoes::iconst_3 ()
 {
 	f->operandos->push(int(3));
 }
 
-// Push (int) 4 to the operands stack
 void Operacoes::iconst_4 ()
 {
 	f->operandos->push(int(4));
 }
 
-// Push (int) 5 to the operands stack
 void Operacoes::iconst_5 ()
 {
 	f->operandos->push(int(5));
 }
 
-// Push (long) 0 to the operands stack
 void Operacoes::lconst_0 ()
 {
-	f->operandos->push(long(0));
+	f->operandos->push(int(0));
 }
 
-// Push (long) 1 to the operands stack
 void Operacoes::lconst_1 ()
 {
-	f->operandos->push(long(1));
+	f->operandos->push(int(1));
 }
 
-// Push (float) 0.0 to the operands stack
 void Operacoes::fconst_0 ()
 {
 	f->operandos->push(float(0.0));
 }
 
-// Push (float) 1.0 to the operands stack
 void Operacoes::fconst_1 ()
 {
 	f->operandos->push(float(1.0));
 }
 
-// Push (float) 2.0 to the operands stack
 void Operacoes::fconst_2 ()
 {
 	f->operandos->push(float(2.0));
 }
 
-// Push (double) 0.0 to the operands stack
 void Operacoes::dconst_0 ()
 {
 	f->operandos->push(double(0.0));
 }
 
-// Push (double) 1.0 to the operands stack
 void Operacoes::dconst_1 ()
 {
 	f->operandos->push(double(1.0));
 }
 
 
-// Push a byte with signal extension 
 void Operacoes::bipush ()
 {
 	int32_t aux;
 	int8_t byte = getNBytesValue(1, &f->pc);
-	aux = (int32_t) (int8_t) byte; // signal extension
+	aux = (int32_t) (int8_t) byte;
 	f->operandos->push(int(aux));
 }
 
-// Push two bytes 
 void Operacoes::sipush ()
 {
 	uint16_t valShort;
 	int32_t valPushShort;
 	valShort = getNBytesValue(2, &f->pc);
-	valPushShort = (int32_t) (int16_t) valShort;  // signal extension
+	valPushShort = (int32_t) (int16_t) valShort; 
 	f->operandos->push(int(valPushShort));  
 }
 
-// Push a value from constant pool
 void Operacoes::ldc ()
 {
 	uint8_t index = getNBytesValue(1, &f->pc);
@@ -392,7 +365,6 @@ void Operacoes::ldc ()
 	}
 }
 
-// Push a value from constant pool (ldc wide)
 void Operacoes::ldc_w ()
 {
 	uint16_t index = getNBytesValue(2, &f->pc);
@@ -407,7 +379,6 @@ void Operacoes::ldc_w ()
 	}
 }
 
-// Push a long or double value from constant pool
 void Operacoes::ldc2_w ()
 {
 	uint8_t index = getNBytesValue(2, &f->pc);
@@ -416,14 +387,13 @@ void Operacoes::ldc2_w ()
 	if (f->cp[index].tag == LONG)
 	{
 		valPushLong = u4_to_long(f->cp[index].info[0], f->cp[index+1].info[0]);
-		f->operandos->push(long(valPushLong));
+		f->operandos->push(int(valPushLong));
 	} else {
 		valPushDouble = u4_to_double(f->cp[index].info[0], f->cp[index+1].info[0]);
 		f->operandos->push(double(valPushDouble));
 	}
 }
 
-// Reads an integer from the local variables and pushes it
 void Operacoes::iload ()
 {
 	uint16_t index = 0;
@@ -440,7 +410,6 @@ void Operacoes::iload ()
 	f->operandos->push(int(aux.value.i));
 }
 
-// Reads an long from the local variables and pushes it
 void Operacoes::lload ()
 {
 	uint16_t index = 0;
@@ -452,10 +421,9 @@ void Operacoes::lload ()
 		index = getNBytesValue(1, &f->pc);
 	
 	typedElement aux = f->locals->get(int(index));
-	f->operandos->push(long(aux.value.l));
+	f->operandos->push(int(aux.value.l));
 }
 
-// Reads an float from the local variables and pushes it
 void Operacoes::fload ()
 {
 	uint16_t index = 0;
@@ -471,7 +439,6 @@ void Operacoes::fload ()
 	f->operandos->push(float(aux.value.f));
 }
 
-// Reads an double from the local variables and pushes it
 void Operacoes::dload ()
 {
 	uint16_t index;
@@ -487,7 +454,6 @@ void Operacoes::dload ()
 	f->operandos->push(double(aux.value.d));
 }
 
-// Reads a reference from the local variables and pushes it
 void Operacoes::aload ()
 {
 	uint16_t index = 0;
@@ -503,52 +469,45 @@ void Operacoes::aload ()
 	f->operandos->push((int*)(aux.value.pi));
 }
 
-// Reads an integer from the local variables, in the position 0, and pushes it
 void Operacoes::iload_0 ()
 {
 	typedElement aux = f->locals->get(0);
 	f->operandos->push(int(aux.value.i));
 }
 
-// Reads an integer from the local variables, in the position 1, and pushes it
 void Operacoes::iload_1 ()
 {
 	typedElement aux = f->locals->get(1);
 	f->operandos->push(int(aux.value.i));
 }
 
-// Reads an integer from the local variables, in the position 2, and pushes it
 void Operacoes::iload_2 ()
 {
 	typedElement aux = f->locals->get(2);
 	f->operandos->push(int(aux.value.i));
 }
 
-// Reads an integer from the local variables, in the position 3, and pushes it
 void Operacoes::iload_3 ()
 {
 	typedElement aux = f->locals->get(3);
 	f->operandos->push(int(aux.value.i));
 }
 
-// Reads an long from the local variables, in the position 0, and pushes it
 void Operacoes::lload_0 ()
 {
 	lload_n(0);
 }
 
-// Reads an long from the local variables, in the position 1, and pushes it
 void Operacoes::lload_1 ()
 {
 	lload_n(1);
 }
 
 
-// LLOAD_<N>
 void Operacoes::lload_n(short index)
 {
 	typedElement aux = f->locals->get(index);
-	f->operandos->push(long(aux.value.l));
+	f->operandos->push(int(aux.value.l));
 }
 
 void Operacoes::lload_2()
@@ -561,7 +520,6 @@ void Operacoes::lload_3()
  	lload_n(3);
 }
 
-// FLOAD_<N>
 void Operacoes::fload_n(short index)
 {
 	typedElement aux = f->locals->get(index);
@@ -588,7 +546,6 @@ void Operacoes::fload_3()
 	fload_n(3);
 }
 
-// DLOAD_<N>
 void Operacoes::dload_n(short index)
 {
 	typedElement aux = f->locals->get(index);
@@ -616,7 +573,6 @@ void Operacoes::dload_3()
 }
 
 
-// ALOAD_<N>
 void Operacoes::aload_n(short index)
 {
 	typedElement aux = f->locals->get(index);
@@ -660,7 +616,7 @@ void Operacoes::iaload()
 void Operacoes::laload()
 {
 	element_u value1, value2;
-	//struct typedElement_s result;
+	
 
 	value1 = f->operandos->pop();
   	value2 = f->operandos->pop();
@@ -828,7 +784,6 @@ void Operacoes::istore_3()
 		printf("Operando no topo != TYPE_INT\n");
 }
 
-// Read the fload value from a array and push to the operand stack
 void Operacoes::faload()
 {
 	int index = f->operandos->pop().i;
@@ -839,7 +794,6 @@ void Operacoes::faload()
 	f->operandos->push(arrayref->get(index));
 }
 
-// Read the double value from a array and push to the operand stack
 void Operacoes::daload()
 {
 	int index = f->operandos->pop().i;
@@ -847,7 +801,6 @@ void Operacoes::daload()
 	f->operandos->push(arrayref->get(index));
 }
 
-// Read a reference value from a array and push to the operand stack
 void Operacoes::aaload()
 {
 	int index = f->operandos->pop().i;
@@ -855,7 +808,6 @@ void Operacoes::aaload()
 	f->operandos->push(arrayref->get(index));
 }
 
-// Read the boolean value from a array and push to the operand stack
 void Operacoes::baload()
 {
 	int index = f->operandos->pop().i;
@@ -863,7 +815,6 @@ void Operacoes::baload()
 	f->operandos->push(arrayref->get(index));
 }
 
-// Read the char value from a array and push to the operand stack
 void Operacoes::caload()
 {
 	int index = f->operandos->pop().i;
@@ -1057,7 +1008,6 @@ void Operacoes::iastore()
 	vetor[indice.i] = valor.i;
 }
 
-// Stores a double in the operands stack as a array element
 void Operacoes::lastore()
 {
 	element valor = f->operandos->pop();
@@ -1072,7 +1022,6 @@ void Operacoes::lastore()
 		vetor->set(indice.i, aux);
 }
 
-// Stores a float in the operands stack as a array element
 void Operacoes::fastore()
 {
 	element valor = f->operandos->pop();
@@ -1087,7 +1036,6 @@ void Operacoes::fastore()
 		vetor->set(indice.i, aux);
 }
 
-// Stores a double in the operands stack as a array element
 void Operacoes::dastore()
 {
 	element valor = f->operandos->pop();
@@ -1102,7 +1050,6 @@ void Operacoes::dastore()
 		vetor->set(indice.i, aux);
 }
 
-// Stores a reference in the operands stack as a array element
 void Operacoes::aastore()
 {
 	element valor = f->operandos->pop();
@@ -1117,7 +1064,6 @@ void Operacoes::aastore()
 		vetor->set(indice.i, aux);
 }
 
-// Stores a byte in the operands stack as a array element
 void Operacoes::bastore()
 {
 	element valor = f->operandos->pop();
@@ -1132,7 +1078,6 @@ void Operacoes::bastore()
 		vetor->set(indice.i, aux);
 }
 
-// Stores a char in the operands stack as a array element
 void Operacoes::castore()
 {
 	element valor = f->operandos->pop();
@@ -1143,7 +1088,6 @@ void Operacoes::castore()
 		vetor->at(indice.i) = valor.bs;	
 }
 
-// Stores a short in the operands stack as a array element
 void Operacoes::sastore()
 {
 	element valor = f->operandos->pop();
@@ -1168,14 +1112,14 @@ void Operacoes::iadd()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um inteiro!");
+    	throw std::runtime_error("Elemento lido nao e um inteiro!");
     }
 
     if (f->operandos->top_type() == TYPE_INT)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um inteiro!");
+    	throw std::runtime_error("Elemento lido nao e um inteiro!");
     }
 
 	result.type = TYPE_INT;
@@ -1193,14 +1137,14 @@ void Operacoes::ladd()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um long!");
+    	throw std::runtime_error("Elemento lido nao e um long!");
     }
 
     if (f->operandos->top_type() == TYPE_LONG)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um long!");
+    	throw std::runtime_error("Elemento lido nao e um long!");
     }
 
 	result.type = TYPE_LONG;
@@ -1218,14 +1162,14 @@ void Operacoes::fadd()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um float!");
+    	throw std::runtime_error("Elemento lido nao e um float!");
     }
 
     if (f->operandos->top_type() == TYPE_FLOAT)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um float!");
+    	throw std::runtime_error("Elemento lido nao e um float!");
     }
 
 	result.type = TYPE_FLOAT;
@@ -1243,14 +1187,14 @@ void Operacoes::dadd()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um double!");
+    	throw std::runtime_error("Elemento lido nao e um double!");
     }
 
     if (f->operandos->top_type() == TYPE_DOUBLE)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um double!");
+    	throw std::runtime_error("Elemento lido nao e um double!");
     }
 
 	result.type = TYPE_DOUBLE;
@@ -1268,14 +1212,14 @@ void Operacoes::isub()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um inteiro!");
+    	throw std::runtime_error("Elemento lido nao e um inteiro!");
     }
 
     if (f->operandos->top_type() == TYPE_INT)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um inteiro!");
+    	throw std::runtime_error("Elemento lido nao e um inteiro!");
     }
 
 	result.type = TYPE_INT;
@@ -1293,14 +1237,14 @@ void Operacoes::lsub()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um long!");
+    	throw std::runtime_error("Elemento lido nao e um long!");
     }
 
     if (f->operandos->top_type() == TYPE_LONG)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um long!");
+    	throw std::runtime_error("Elemento lido nao e um long!");
     }
 
 	result.type = TYPE_LONG;
@@ -1318,14 +1262,14 @@ void Operacoes::fsub()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um float!");
+    	throw std::runtime_error("Elemento lido nao e um float!");
     }
 
     if (f->operandos->top_type() == TYPE_FLOAT)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um float!");
+    	throw std::runtime_error("Elemento lido nao e um float!");
     }
 
 	result.type = TYPE_FLOAT;
@@ -1343,14 +1287,14 @@ void Operacoes::dsub()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um double!");
+    	throw std::runtime_error("Elemento lido nao e um double!");
     }
 
     if (f->operandos->top_type() == TYPE_DOUBLE)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um double!");
+    	throw std::runtime_error("Elemento lido nao e um double!");
     }
 
 	result.type = TYPE_DOUBLE;
@@ -1368,14 +1312,14 @@ void Operacoes::imul()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um inteiro!");
+    	throw std::runtime_error("Elemento lido nao e um inteiro!");
     }
 
     if (f->operandos->top_type() == TYPE_INT)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um inteiro!");
+    	throw std::runtime_error("Elemento lido nao e um inteiro!");
     }
 
 	result.type = TYPE_INT;
@@ -1393,14 +1337,14 @@ void Operacoes::lmul()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um long!");
+    	throw std::runtime_error("Elemento lido nao e um long!");
     }
 
     if (f->operandos->top_type() == TYPE_LONG)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um long!");
+    	throw std::runtime_error("Elemento lido nao e um long!");
     }
 
 	result.type = TYPE_LONG;
@@ -1418,14 +1362,14 @@ void Operacoes::fmul()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um float!");
+    	throw std::runtime_error("Elemento lido nao e um float!");
     }
 
     if (f->operandos->top_type() == TYPE_FLOAT)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um float!");
+    	throw std::runtime_error("Elemento lido nao e um float!");
     }
 
 	result.type = TYPE_FLOAT;
@@ -1443,14 +1387,14 @@ void Operacoes::dmul()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um double!");
+    	throw std::runtime_error("Elemento lido nao e um double!");
     }
 
     if (f->operandos->top_type() == TYPE_DOUBLE)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um double!");
+    	throw std::runtime_error("Elemento lido nao e um double!");
     }
 
 	result.type = TYPE_DOUBLE;
@@ -1468,14 +1412,14 @@ void Operacoes::idiv()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um inteiro!");
+    	throw std::runtime_error("Elemento lido nao e um inteiro!");
     }
 
     if (f->operandos->top_type() == TYPE_INT)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um inteiro!");
+    	throw std::runtime_error("Elemento lido nao e um inteiro!");
     }
 
 	result.type = TYPE_INT;
@@ -1493,14 +1437,14 @@ void Operacoes::ldiv()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um long!");
+    	throw std::runtime_error("Elemento lido nao e um long!");
     }
 
     if (f->operandos->top_type() == TYPE_LONG)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um long!");
+    	throw std::runtime_error("Elemento lido nao e um long!");
     }
 
 	result.type = TYPE_LONG;
@@ -1518,14 +1462,14 @@ void Operacoes::fdiv()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um float!");
+    	throw std::runtime_error("Elemento lido nao e um float!");
     }
 
     if (f->operandos->top_type() == TYPE_FLOAT)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um float!");
+    	throw std::runtime_error("Elemento lido nao e um float!");
     }
 
 	result.type = TYPE_FLOAT;
@@ -1543,14 +1487,14 @@ void Operacoes::ddiv()
 	{
     	value2 = f->operandos->pop();
     } else {
-    	throw std::runtime_error("Elemento lido nao era um double!");
+    	throw std::runtime_error("Elemento lido nao e um double!");
     }
 
     if (f->operandos->top_type() == TYPE_DOUBLE)
 	{
 		value1 = f->operandos->pop();	
     } else {
-    	throw std::runtime_error("Elemento lido nao era um double!");
+    	throw std::runtime_error("Elemento lido nao e um double!");
     }
 
 	result.type = TYPE_DOUBLE;
@@ -1694,7 +1638,7 @@ void Operacoes::fneg ()
 
     result.type = TYPE_FLOAT;
     result.realType = RT_FLOAT;
-    //inverte o bit 31
+    
     result.value.i = value.i + 0x80000000;
     f->operandos->push(result);
 }
@@ -1708,7 +1652,7 @@ void Operacoes::dneg ()
 
     result.type = TYPE_DOUBLE;
     result.realType = RT_DOUBLE;
-    //inverte o bit 63
+    
     result.value.l = value.l + 0x8000000000000000;
     f->operandos->push(result);
 }
@@ -1961,7 +1905,7 @@ void Operacoes::d2f ()
 	f->operandos->push(aux.f);
 }
 
-//le um int do topo da pilha (truncado para byte), extende com sinal para um int e reinsere na pilha de operandos
+
 void Operacoes::i2b()
 {
 	int8_t value = f->operandos->pop().bs;
@@ -1969,7 +1913,7 @@ void Operacoes::i2b()
 	f->operandos->push(int(value));
 }
 
-//le um int do topo da pilha (truncado para char), extende com 0 para um int  e reinsere na pilha de operandos
+
 void Operacoes::i2c()
 {
 	typedElement value;
@@ -1979,7 +1923,7 @@ void Operacoes::i2c()
 	f->operandos->push(value);
 }
 
-//le um int do topo da pilha (truncado para short), extende com sinal para um int e reinsere na pilha de operandos
+
 void Operacoes::i2s()
 {
 	typedElement value;
@@ -1990,7 +1934,7 @@ void Operacoes::i2s()
 	f->operandos->push(value);
 }
 
-//le os dois primeiros elementos da pilha de operandos (dois elementos do tipo long) e os compara
+
 void Operacoes::lcmp()
 {
 	int64_t value2 = f->operandos->pop().ls;
@@ -2004,7 +1948,7 @@ void Operacoes::lcmp()
 		f->operandos->push(int(-1));
 }
 
-//le os dois primeiros elementos da pilha de operandos (dois elementos do tipo float) e os compara
+
 void Operacoes::fcmpl()
 {
 	float value2 = f->operandos->pop().f;
@@ -2013,7 +1957,7 @@ void Operacoes::fcmpl()
 	
 	res1 = checkFloat(value1);
 	res2 = checkFloat(value2);
-	//se value1 ou value2 for NaN entao adiciona -1 na pilha de operandos
+	
 	if (res1 == 3 || res2 == 3)
 	{
 		f->operandos->push(int(-1));
@@ -2027,7 +1971,7 @@ void Operacoes::fcmpl()
 	}
 }
 
-//le os dois primeiros elementos da pilha de operandos (dois elementos do tipo float) e os compara
+
 void Operacoes::fcmpg()
 {
 	float value2 = f->operandos->pop().f;
@@ -2036,7 +1980,7 @@ void Operacoes::fcmpg()
 	
 	res1 = checkFloat(value1);
 	res2 = checkFloat(value2);
-	//se value1 ou value2 for NaN entao adiciona 1 na pilha de operandos
+	
 	if (res1 == 3 || res2 == 3)
 	{
 		f->operandos->push(int(1));
@@ -2050,7 +1994,7 @@ void Operacoes::fcmpg()
 	}
 }
 
-//le os dois primeiros elementos da pilha de operandos (dois elementos do tipo double) e os compara
+
 void Operacoes::dcmpl()
 {
 	double value2 = f->operandos->pop().d;
@@ -2059,7 +2003,7 @@ void Operacoes::dcmpl()
 	
 	res1 = checkDouble(value1);
 	res2 = checkDouble(value2);
-	//se value1 ou value2 for NaN entao adiciona 1 na pilha de operandos
+	
 	if (res1 == 3 || res2 == 3)
 	{
 		f->operandos->push(int(1));
@@ -2073,7 +2017,7 @@ void Operacoes::dcmpl()
 	}
 }
 
-//le os dois primeiros elementos da pilha de operandos (dois elementos do tipo double) e os compara
+
 void Operacoes::dcmpg()
 {
 	double value2 = f->operandos->pop().d;
@@ -2082,7 +2026,7 @@ void Operacoes::dcmpg()
 	
 	res1 = checkDouble(value1);
 	res2 = checkDouble(value2);
-	//se value1 ou value2 for NaN entao adiciona 1 na pilha de operandos
+	
 	if (res1 == 3 || res2 == 3)
 	{
 		f->operandos->push(int(1));
@@ -2096,7 +2040,7 @@ void Operacoes::dcmpg()
 	}
 }
 
-//le o valor do topo da pilha, se for igual a 0 salta
+
 void Operacoes::ifeq()
 {
 	int value = f->operandos->pop().i;
@@ -2107,7 +2051,7 @@ void Operacoes::ifeq()
 	
 }
 
-//le o valor do topo da pilha, se for diferente de 0 salta
+
 void Operacoes::ifne()
 {
 	int value = f->operandos->pop().i;
@@ -2118,7 +2062,7 @@ void Operacoes::ifne()
 	
 }
 
-//le o valor do topo da pilha, se for menor que 0 salta
+
 void Operacoes::iflt()
 {
 	int value = f->operandos->pop().i;
@@ -2129,7 +2073,7 @@ void Operacoes::iflt()
 	
 }
 
-//le o valor do topo da pilha, se for maior ou igual a 0 salta
+
 void Operacoes::ifge()
 {
 	int value = f->operandos->pop().i;
@@ -2140,7 +2084,7 @@ void Operacoes::ifge()
 	
 }
 
-//le o valor do topo da pilha, se for maior que 0 salta
+
 void Operacoes::ifgt()
 {
 	int value = f->operandos->pop().i;
@@ -2150,7 +2094,7 @@ void Operacoes::ifgt()
 		f->pc += branchbyte - 3;
 }
 
-//le o valor do topo da pilha, se for menor ou igual a 0 salta
+
 void Operacoes::ifle()
 {
 	int value = f->operandos->pop().i;
@@ -2160,7 +2104,7 @@ void Operacoes::ifle()
 		f->pc += branchbyte - 3;
 }
 
-//le dois valores da pilha, se forem iguais salta
+
 void Operacoes::if_icmpeq ()
 {
 	int value1, value2;
@@ -2294,7 +2238,7 @@ void Operacoes::jsr()
 	f->pc += offset - 3;
 }
 
-//pode ser utilizada em conjunto com wide
+
 void Operacoes::funcret()
 {
 	if (isWide)
@@ -2308,7 +2252,7 @@ void Operacoes::funcret()
 
 void Operacoes::tableswitch()
 {
-	//guarda o valor inicial do pc
+	
 	unsigned char *bkpPC = (f->pc) - 1;
 	uint8_t mod = (f->pc - f->m.attributes->info->code.code) % 4;
 	f->pc += mod;
@@ -2320,7 +2264,7 @@ void Operacoes::tableswitch()
 
 	int32_t index = f->operandos->popTyped().value.is;
 
-	//salto padrão caso index não esteja no range correto
+	
 	if (index < low || index > high)
 	{
 		f->pc = bkpPC;
@@ -2387,7 +2331,7 @@ void Operacoes::ireturn()
 
 void Operacoes::lreturn()
 {
-	long value = f->operandos->pop().l;
+	int value = f->operandos->pop().l;
 	
 	while (!f->operandos->empty())
 	{
@@ -2442,7 +2386,7 @@ void Operacoes::areturn()
         }
 
     } else {
-        throw std::runtime_error("Elemento lido nao era uma referencia!");
+        throw std::runtime_error("Elemento lido nao e uma referencia!");
     }
 
     threads->pop();
@@ -2483,7 +2427,7 @@ void Operacoes::getstatic()
 {
     uint16_t indexByte = getNBytesValue(2, &f->pc);
 
-    //volta pc para o inicio da instrucao, para caso ela tenha que ser executada novamente
+    
     f->pc -= 3;
 
     frame *aux = f;
@@ -2504,7 +2448,7 @@ void Operacoes::getstatic()
     string name = dereferenceIndex(f->cp, name_and_type_element.info[0].u2);
     string descriptor = dereferenceIndex(f->cp, name_and_type_element.info[1].u2);
 
-    // JAVA LANG
+
     if (class_name == "java/lang/System" && descriptor == "Ljava/io/PrintStream;" )
 	{
         f->pc+=3;
@@ -2515,7 +2459,7 @@ void Operacoes::getstatic()
 
     if(static_class == NULL) throw std::runtime_error("Field nao existe na classe definida!");
 
-    // Caso <clinit> seja empilhado.
+
     if (threads->top() != aux)
 	{
         return;
@@ -2530,7 +2474,7 @@ void Operacoes::getstatic()
 
     f->operandos->push(element);
 
-    //anda com o pc para a proxima instrucao
+    
     f->pc += 3;
 }
 
@@ -2556,7 +2500,7 @@ void Operacoes::putstatic()
     string name = dereferenceIndex(f->cp, name_and_type_element.info[0].u2);
     string descriptor = dereferenceIndex(f->cp, name_and_type_element.info[1].u2);
 
-    // JAVA LANG
+
     if (class_name == "java/lang/System" && descriptor == "Ljava/io/PrintStream;" )
 	{
         return;
@@ -2566,7 +2510,7 @@ void Operacoes::putstatic()
 
     if(static_class == NULL) throw std::runtime_error("Field nao existe na classe definida!");
 
-    // Caso <clinit> seja empilhado.
+
     if (threads->top() != aux)
 	{
         return;
@@ -2647,7 +2591,7 @@ void Operacoes::invokevirtual()
 
     if (class_name.find("java/") != string::npos)
 	{
-        // simulando println ou print
+    
         if (class_name == "java/io/PrintStream" && (name == "print" || name == "println"))
 		{
             if (descriptor != "()V")
@@ -2683,9 +2627,9 @@ void Operacoes::invokevirtual()
                         printf("%d", element.value.is);
                         break;
                     default:
-                        // PRECISA ?
-                    	//cout << "" << endl;
-                        //throw std::runtime_error("Dado Invalido.");
+                    
+                    	
+                        
                         printf("%d", element.value.is);
                         break;
                 }
@@ -2747,8 +2691,8 @@ void Operacoes::invokevirtual()
         }
     } else {
         
-        uint16_t num_args = 0; // numero de argumentos contidos na pilha de operandos
-        uint16_t i = 1; // pulando o primeiro '('
+        uint16_t num_args = 0;
+        uint16_t i = 1;
         while (descriptor[i] != ')') 
         {
             char baseType = descriptor[i];
@@ -2786,10 +2730,10 @@ void Operacoes::invokevirtual()
 
         ClasseInstancia* instance = (ClasseInstancia *) object_element.value.pi;
 
-        //ClasseEstatica *classRuntime = MethodArea::getClass(class_name);
+        
 		MethodArea::getClass(class_name);
 
-        // Caso <clinit> seja empilhado.
+    
         if (threads->top() != aux)
 		{
         	f->pc = f->pc - 3;
@@ -2826,7 +2770,7 @@ void Operacoes::invokespecial()
     string name = dereferenceIndex(f->cp, metodo.info[0].u2);
     string desc = dereferenceIndex(f->cp, metodo.info[1].u2);
 
-    //checa se é uma das classes simuladas
+    
     if ((classe == "java/lang/Object" || classe == "java/lang/String") && name == "<init>")
 	{
         if (classe == "java/lang/String")
@@ -2836,14 +2780,14 @@ void Operacoes::invokespecial()
         return;
     }
     
-    //checa se o metodo que irá executar é válido
+    
     if (classe.find("java/") != string::npos)
 	{
         cerr << "ERRO: \"" << name << "\" nao definido." << endl;
         exit(1);
     } else {
-        uint16_t count = 0; // numero de argumentos contidos na pilha de operandos
-        uint16_t i = 1; //variavel para andar pelo descritor
+        uint16_t count = 0;
+        uint16_t i = 1; 
 
         while (desc[i] != ')')
 		{
@@ -2854,16 +2798,16 @@ void Operacoes::invokespecial()
             } else if (baseType == 'L')
 			{
                 count++;
-                //para pular o nome da classe
+                
                 while (desc[++i] != ';');
             } else if (baseType == '[')
 			{
                 count++;
-                //para pegar todas as dimensões mais rapidamente
+                
                 while (desc[++i] == '[');
                 if (desc[i] == 'L')
 				{
-                    //para pular o nome da classe
+                    
                     while (desc[++i] != ';');
                 }
             } else {
@@ -2872,7 +2816,7 @@ void Operacoes::invokespecial()
             i++;
         }
 
-        //desempilha a quantidade de parametros calculada acima
+        
         vector<typedElement> parametros;
         for (int i = 0; i < count; i++)
 		{
@@ -2886,30 +2830,30 @@ void Operacoes::invokespecial()
 
         ClasseInstancia* instance = (ClasseInstancia *) object_element.value.pi;
 
-        //ClasseEstatica *classRuntime = MethodArea::getClass(classe);
+        
 		MethodArea::getClass(classe);
 
-        //checa se houve uma mudança no método corrente, caso tenha, deixa o novo método executar
+        
         if (threads->top() != auxFrame)
 		{
-            //empilha de volta os operandos desempilhados na ordem contrária que saíram
+            
             f->operandos->push(parametros[0]);
             while (count-- > 0)
 			{
                 f->operandos->push(parametros[count]);
             }
-            //volta com o pc para o opcode que vai ser executado novamente
-            //ele já havia sido deslocado para o próximo opcode pela função getNBytes
+            
+            
             f->pc -= 3;
             return;
         }
 
-        //cria o frame no topo da pilha
+        
         fs->addFrame(
             instance->getStatic()->getDef()->getMethod(name,desc), 
             instance->getStatic()->getDef()->getClassThatHasSerachedMethod(name,desc)->getCP()
         );        
-        //adiciona os parâmetros ao vetor de variáveis locais
+        
         fs->setArguments(parametros);
     }
 }
@@ -2946,8 +2890,8 @@ void Operacoes::invokestatic()
         cerr << "Tentando invocar metodo estatico invalido: " << name << endl;
     }
     else {
-        uint16_t nargs = 0; // numero de argumentos contidos na pilha de operandos
-        uint16_t i = 1; // pulando o primeiro '('
+        uint16_t nargs = 0;
+        uint16_t i = 1;
         while (descriptor[i] != ')')
 		{
             char baseType = descriptor[i];
@@ -2978,27 +2922,27 @@ void Operacoes::invokestatic()
 
         ClasseEstatica *ce = MethodArea::getClass(class_name);
 
-        // Caso <clinit> seja empilhado.
+    
         if (threads->top() != auxFrame)
 		{
-            //empilha de volta os operandos desempilhados na ordem contrária que saíram
+            
             while (nargs-- > 0)
 			{
                 f->operandos->push(args[nargs]);
             }
-            //volta com o pc para o opcode que vai ser executado novamente
-            //ele já havia sido deslocado para o próximo opcode pela função getNBytes
+            
+            
             f->pc -= 3;
             return;
         }
         
-        //cria o frame no topo da pilha
+        
         fs->addFrame(
             ce->getDef()->getMethod(name,descriptor), 
             ce->getDef()->getClassThatHasSerachedMethod(name,descriptor)->getCP()
         );
 
-        //adiciona os parâmetros ao vetor de variáveis locais
+        
         fs->setArguments(args);
 
     }
@@ -3031,20 +2975,20 @@ void Operacoes::invokeinterface()
 	{
         throw std::runtime_error("Tentativa de invocar metodo de interface invalido!");
     } else {
-        uint16_t num_args = 0; //numero de argumentos na pilha de operandos
-        uint16_t i = 1; //pulando primeiro argumento '('
+        uint16_t num_args = 0; 
+        uint16_t i = 1; 
         while (descriptor[i] != ')')
 		{
             char baseType = descriptor[i];
             if (baseType == 'D' || baseType == 'J')
-			{      //64 bits
+			{      
                 num_args += 2;
             } else if (baseType == 'L')
-			{                  //referencia - instancia de class
+			{                  
                 num_args++;
                 while (descriptor[++i] != ';');
             } else if (baseType == '[')
-			{                  // referencia
+			{                 
                 num_args++;
                 while (descriptor[++i] == '[');
                 if (descriptor[i] == 'L') while (descriptor[++i] != ';');
@@ -3070,25 +3014,25 @@ void Operacoes::invokeinterface()
         
         ClasseInstancia *instance = (ClasseInstancia *) object_element.value.pi;
 
-        // Caso <clinit> seja empilhado.
+    
         if (threads->top() != auxFrame)
 		{
-            //empilha de volta os operandos desempilhados na ordem contrária que saíram
+            
             while (num_args-- > 0)
 			{
                 f->operandos->push(parametros[num_args]);
             }
-            //volta com o pc para o opcode que vai ser executado novamente
-            //ele já havia sido deslocado para o próximo opcode pela função getNBytes
+            
+            
             f->pc -= 3;
             return;
         }
-        //cria o frame no topo da pilha
+        
         fs->addFrame(
             instance->getStatic()->getDef()->getMethod(name,descriptor), 
             instance->getStatic()->getDef()->getClassThatHasSerachedMethod(name,descriptor)->getCP()
         );
-        //adiciona os parâmetros ao vetor de variáveis locais
+        
         fs->setArguments(parametros);
     }
 }
@@ -3154,7 +3098,7 @@ void Operacoes::newarray()
 
 void Operacoes::anewarray()
 {
-    //uint16_t indexbyte = getNBytesValue(2, &f->pc);
+    
 	getNBytesValue(2, &f->pc);
     int32_t count = f->operandos->pop().is;
 
@@ -3200,12 +3144,12 @@ void Operacoes::athrow()
 
 void Operacoes::wide()
 {
-	//seta a variavel global wide -> TRUE
+	
 	isWide = true;
 	Operacoes::run(getNBytesValue(1, &f->pc));
 }
 
-//terminar
+
 void Operacoes::multianewarray()
 {
 
@@ -3230,14 +3174,14 @@ void Operacoes::multianewarray()
 	   }
 
 
-	   string multiArrayType = class_name.substr(count+1, class_name.size()-count-2); // em caso de ser uma referência (e.g. [[[Ljava/lang/String;)
+	   string multiArrayType = class_name.substr(count+1, class_name.size()-count-2);
 
 	   switch (class_name[count])
 	   {
 	       case 'L':
 	           if (multiArrayType != "java/lang/String")
 			   {
-	               MethodArea::getClass(multiArrayType); // verifica se existe classe com esse nome
+	               MethodArea::getClass(multiArrayType);
 	           }
 	           element.realType = RT_REFERENCE;
 	           element.type = TYPE_REFERENCE;
@@ -3281,7 +3225,7 @@ void Operacoes::multianewarray()
     stack<int> count_dim;
     for (int i = 0; i < dimensions; i++)
 	{
-        // PRECISO VERIFICAR O TIPO (INT)?
+    
         count_dim.push(f->operandos->popTyped().value.i);
     }
 
@@ -3377,7 +3321,7 @@ void Operacoes::jsr_w()
 	f->pc += offset - 5;
 }
 
-//Opcionais
+
 
 void Operacoes::dup()
 {

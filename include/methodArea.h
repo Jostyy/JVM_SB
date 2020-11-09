@@ -1,8 +1,5 @@
-/** \file methodArea.h
-*	\brief
-*/
-#ifndef METHOD_AREA
-#define METHOD_AREA
+#ifndef METHOD_AREA_H
+#define METHOD_AREA_H
 
 class MethodArea;
 
@@ -17,9 +14,7 @@ class MethodArea;
 
 using namespace std;
 
-///Classe responsável por todas as operações que gerenciam os métodos.
-class MethodArea
-{
+class MethodArea{
 private:
 	static map<string, ClasseEstatica*> classes;
 	static FrameStack *fs;
@@ -28,8 +23,8 @@ private:
 public:
 	static string path;
 	static ClasseEstatica *getClass(string);
+	static bool addClass(Leitor*);
     static bool addClass(string);
-    static bool addClass(Leitor*);
     static void setFrameStack(FrameStack*);
 };
 

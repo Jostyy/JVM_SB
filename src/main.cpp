@@ -1,23 +1,7 @@
-/*!
- * \file main.cpp
- * \brief 
- */
-#include "classeLeitor.h"
-#include "frame.h"
-#include "methodArea.h"
+#include "../include/classeLeitor.h"
+#include "../include/frame.h"
+#include "../include/methodArea.h"
 
-
-/**
- * Funcao principal, dá a opção de escolha entre interpretador e exibidor
- * 
- * @param argc, *argv[]
- * @section Integrantes:
- * 	André Luis Souto 		14/0016261
-	Rafael Oliveira de Souza 		15/0081537
-	Michelangelo da Rocha Machado	14/0156089
-	Otto Kristian von Sperling	12/0131510
-	Victor Fabre Figueiredo         15/0022948
- */
 int main(int argc, char *argv[])
 {
 	if (argc != 3)
@@ -27,7 +11,6 @@ int main(int argc, char *argv[])
 	}
 
 	Leitor leitor(argv[2]);
-
 	if (argv[1][1] == 'e')
 	{
 		leitor.run();
@@ -50,12 +33,13 @@ int main(int argc, char *argv[])
 		MethodArea::addClass(&leitor);
 
 		FrameStack frames(&leitor);
-	  	frames.execute();
+		frames.execute();
 	}
 	else
 	{
 		printf("Parametros invalidos, o programa deve ser executado com: %s [-e ou -i] caminho_arquivo\n", argv[0]);
-		return 1;
+
+		return 0;
 	}
 
 	return 0;

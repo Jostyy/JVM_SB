@@ -1,23 +1,19 @@
-/*!
- * \file
- * \brief attributes.cpp
- */
 
-#include "attributes.h"
+#include "../include/attributes.h"
 
 t_exception_table* readExceptionHandler(FILE* fp)
 {
-  t_exception_table* return_value = (t_exception_table*) malloc(sizeof(t_exception_table));
+  t_exception_table* retvalue = (t_exception_table*) malloc(sizeof(t_exception_table));
 
-  return_value->start_pc = readU2(fp);
+  retvalue->start_pc = readU2(fp);
 
-  return_value->end_pc = readU2(fp);
+  retvalue->end_pc = readU2(fp);
   
-  return_value->handler_pc = readU2(fp);
+  retvalue->handler_pc = readU2(fp);
   
-  return_value->catch_type = readU2(fp);
+  retvalue->catch_type = readU2(fp);
 
-  return return_value;
+  return retvalue;
 }
 
 t_info* readAttributeInfo(FILE* fp, cp_info *cp, unsigned short index, unsigned short length)
@@ -95,14 +91,14 @@ t_info* readAttributeInfo(FILE* fp, cp_info *cp, unsigned short index, unsigned 
 
 attribute_info readAttribute (FILE* fp, cp_info *cp) 
 {
-  attribute_info return_value;
+  attribute_info retvalue;
 
-  return_value.name_index = readU2(fp);
-  return_value.length = readU4(fp);
+  retvalue.name_index = readU2(fp);
+  retvalue.length = readU4(fp);
 
-  return_value.info = readAttributeInfo(fp, cp, return_value.name_index, return_value.length);
+  retvalue.info = readAttributeInfo(fp, cp, retvalue.name_index, retvalue.length);
 
-  return return_value;
+  return retvalue;
 }
 
 attribute_info* readAttributes(FILE* fp, cp_info *cp, int length)
@@ -135,11 +131,8 @@ void printAttribute (attribute_info a, cp_info *cp)
   string name_of_attribute = dereferenceIndex(cp, a.name_index);
 
   cout << "\t\tName: cp info #" << a.name_index << " " <<  name_of_attribute << endl;
-  //printf("Nome: %s\n",name_of_attribute );
 
   cout << "\t\tAttribute lenght: " << a.length << endl;
-
-  //printf("Size: %d\n", a.length );
 
   if(name_of_attribute == "ConstantValue") 
   {

@@ -1,8 +1,5 @@
-/** \file operacoes.h
-*	\brief
-*/
-#ifndef OPERACOES
-#define OPERACOES
+#ifndef OPERACOES_H
+#define OPERACOES_H
 
 #include "frame.h"
 #include "methodArea.h"
@@ -14,23 +11,8 @@ typedef void (*fun)(void);
 
 class Operacoes {
 private:
-
-	/*! \fn uint32_t getNBytesValue(uint8_t n, unsigned char** code)
-		\brief Function that returns a n bytes value
-		
-
-		\param n Defines how many positions will be shifted and many bytes will be read.
-		
-		\param pc Pointer to pc.
-	*/
 	static uint32_t getNBytesValue(uint8_t n, unsigned char** pc);
 
-	/*! \fn ClasseEstatica* getStaticClassThatHasField(ClasseEstatica* base, string field_name)
-		\brief Recursively search for a static class that contains specific field.
-
-		\param base ClasseEstatica that is the base for searching field, caso o campo nao seja encontrado nessa classe, go to SuperClasse.
-		\param field_name Name of field to will be searched.
-	*/
 	static ClasseEstatica* getStaticClassThatHasField(ClasseEstatica* base, string field_name);
 
 	static n_array* getNewMultiArray(stack<int> count_dim);
@@ -40,15 +22,11 @@ private:
 	static struct frame_s *f;
 	static stack<struct frame_s*> *threads;
 	static FrameStack *fs;
-  //tem que adicionar os operandos aqui pra todas as funcoes terem a mesma assinatura
 
-	//funcoes auxiliares
 	static void lload_n(short index);
 	static void fload_n(short index);
 	static void dload_n(short index);
 	static void aload_n(short index);
-
-	//operacoes que serao adicionadas ao vetor de funcoes
 	static void nop();
 	static void aconst_null();
 	static void iconst_m1();
@@ -65,7 +43,6 @@ private:
 	static void fconst_2();
 	static void dconst_0();
 	static void dconst_1();
-	//end line 0
 	static void bipush();
 	static void sipush();
 	static void ldc();
@@ -82,7 +59,6 @@ private:
 	static void iload_3();
 	static void lload_0();
 	static void lload_1();
-	//end line 1
 	static void lload_2();
 	static void lload_3();
 	static void fload_0();
@@ -99,7 +75,6 @@ private:
 	static void aload_3();
 	static void iaload();
 	static void laload();
-	//end line 2
 	static void faload();
 	static void daload();
 	static void aaload();
@@ -116,7 +91,6 @@ private:
 	static void istore_3();
 	static void istore_0();
 	static void lstore_0();
-	//end line 3
 	static void lstore_1();
 	static void lstore_2();
 	static void lstore_3();
@@ -133,7 +107,6 @@ private:
 	static void astore_2();
 	static void astore_3();
 	static void iastore();
-	//end line 4
 	static void lastore();
 	static void fastore();
 	static void dastore();
@@ -150,7 +123,6 @@ private:
 	static void dup2_x1();
 	static void dup2_x2();
 	static void swap();
-	//end line 5
 	static void iadd();
 	static void ladd();
 	static void fadd();
@@ -167,7 +139,6 @@ private:
 	static void ldiv();
 	static void fdiv();
 	static void ddiv();
-	//end line 6
 	static void irem();
 	static void lrem();
 	static void frem();
@@ -184,7 +155,6 @@ private:
 	static void lushr();
 	static void iand();
 	static void land();
-	//end line 7
 	static void ior();
 	static void lor();
 	static void ixor();
@@ -201,7 +171,6 @@ private:
 	static void f2d();
 	static void d2i();
 	static void d2l();
-	//end line 8
 	static void d2f();
 	static void i2b();
 	static void i2c();
@@ -218,7 +187,6 @@ private:
 	static void ifgt();
 	static void ifle();
 	static void if_icmpeq();
-	//end line 9
 	static void if_icmpne();
 	static void if_icmplt();
 	static void if_icmpge();
@@ -235,7 +203,6 @@ private:
 	static void lreturn();
 	static void freturn();
 	static void dreturn();
-	//end line 10
 	static void areturn();
 	static void func_return();
 	static void getstatic();
@@ -246,26 +213,17 @@ private:
 	static void invokespecial();
 	static void invokestatic();
 	static void invokeinterface();
-	/*
-	static void nop();*/
 	static void func_new();
 	static void newarray();
 	static void anewarray();
 	static void arraylength();
 	static void athrow();
-	//end line 11
-	/*
-	static void nop();
-	static void nop();
-	static void nop();
-	static void nop();*/
 	static void wide();
 	static void multianewarray();
 	static void ifnull();
 	static void ifnonnull();
 	static void goto_w();
 	static void jsr_w();
-	//fim linha 12
 
 	const static fun functions[];
 public:
