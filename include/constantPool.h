@@ -26,7 +26,7 @@ const string typeNames[] = {"UTF-8", "-", "Integer", "Float", "Long", "Double", 
 #define NAME_AND_TYPE 12
 
 int loadConstantPool (cp_info *constantPool, int tamanhoCP, FILE* fp);
-string dereferenceIndex (cp_info *cp, U2 index);
+string getPathReferenceIndex (cp_info *cp, U2 index);
 void printConstantPool (cp_info *constantPool, int tamanhoCP);
 
 #endif

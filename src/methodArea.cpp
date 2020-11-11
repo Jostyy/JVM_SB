@@ -13,8 +13,9 @@ ClasseEstatica *MethodArea::getClass(string s){
 }
 
 bool MethodArea::addClass(Leitor *l){
-    if (l->getStatus() == -1)
+    if (l->getStatus() == -1){
         l->load();
+    }
 
     switch (l->getStatus()){
         case 0:
@@ -24,7 +25,7 @@ bool MethodArea::addClass(Leitor *l){
     }
 
     ClasseEstatica *add = new ClasseEstatica(l);
-    classes.insert(pair<string, ClasseEstatica*>(dereferenceIndex(l->getCP(), l->getThis_class()), add));
+    classes.insert(pair<string, ClasseEstatica*>(getPathReferenceIndex(l->getCP(), l->getThis_class()), add));
 
     if (l->hasClinit())
         fs->addFrame(l->getClinit(), l->getCP());

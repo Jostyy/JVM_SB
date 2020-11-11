@@ -26,17 +26,17 @@ void printConstantPool(cp_info* constantPool, int tamanhoCP) {
 			break;
 		case CLASS:
 		case STRING:
-			cout << " " << constantPool[i].info[0].u2 << "\t\t// " << dereferenceIndex(constantPool, i);
+			cout << " " << constantPool[i].info[0].u2 << "\t\t// " << getPathReferenceIndex(constantPool, i);
 			break;
 		case NAME_AND_TYPE:
 			cout << " cp info #" << constantPool[i].info[0].u2 << "  cp info #" << constantPool[i].info[1].u2;
-			cout << "\t\t// " << dereferenceIndex(constantPool, i);
+			cout << "\t\t// " << getPathReferenceIndex(constantPool, i);
 			break;
 		case METHOD_REF:
 		case INTERFACE_REF:
 		case FIELD_REF:
 			cout << " cp info #" << constantPool[i].info[0].u2 << "  cp info #" << constantPool[i].info[1].u2;
-			cout << "\t\t// " << dereferenceIndex(constantPool, i);
+			cout << "\t\t// " << getPathReferenceIndex(constantPool, i);
 			break;
 		}
 		cout << endl;
@@ -95,22 +95,22 @@ int loadConstantPool (cp_info *constantPool, int tamanhoCP, FILE* fp){
 	return i;
 }
 
-string dereferenceIndex (cp_info *cp, U2 index){
+string getPathReferenceIndex (cp_info *cp, U2 index){
 	switch (cp[index].tag){
 		case UTF8:
 			return showUTF8(cp[index].info[1].array, cp[index].info[0].u2);
 
 		case CLASS:
 		case STRING:
-			return dereferenceIndex(cp, cp[index].info[0].u2);
+			return getPathReferenceIndex(cp, cp[index].info[0].u2);
 
 		case NAME_AND_TYPE:
-			return (dereferenceIndex(cp, cp[index].info[0].u2) + "  " + dereferenceIndex(cp, cp[index].info[1].u2));
+			return (getPathReferenceIndex(cp, cp[index].info[0].u2) + "  " + getPathReferenceIndex(cp, cp[index].info[1].u2));
 
 		case METHOD_REF:
 		case INTERFACE_REF:
 		case FIELD_REF:
-			return (dereferenceIndex(cp, cp[index].info[0].u2) + "  " + dereferenceIndex(cp, cp[index].info[1].u2));
+			return (getPathReferenceIndex(cp, cp[index].info[0].u2) + "  " + getPathReferenceIndex(cp, cp[index].info[1].u2));
 	}
 	return "";
 }

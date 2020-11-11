@@ -15,7 +15,7 @@ unsigned short *readInterfaces (FILE* fp, int length){
 
 
 void printInterface (unsigned short interface, cp_info *cp, int index){
-	cout << "\tInterface " << index << ": " << dereferenceIndex(cp, interface) << endl;
+	cout << "\tInterface " << index << ": " << getPathReferenceIndex(cp, interface) << endl;
 }
 
 

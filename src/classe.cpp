@@ -11,7 +11,7 @@ ClasseEstatica::ClasseEstatica(Leitor *classeLida){
 		{
 			typedElement *auxValue = (typedElement *) malloc(sizeof(typedElement));
 			auxValue->value.l = 0;
-			string desc = dereferenceIndex(classeLida->getCP(), fields[i].descriptor_index);
+			string desc = getPathReferenceIndex(classeLida->getCP(), fields[i].descriptor_index);
 
 			switch (desc[0])
 			{
@@ -47,7 +47,7 @@ ClasseEstatica::ClasseEstatica(Leitor *classeLida){
 					break;
 			}
 
-			string auxName = dereferenceIndex(classeLida->getCP(), fields[i].name_index);
+			string auxName = getPathReferenceIndex(classeLida->getCP(), fields[i].name_index);
 			staticFields.insert(pair<string, typedElement*>(auxName, auxValue));
 		}
 	}
@@ -131,7 +131,7 @@ ClasseInstancia::ClasseInstancia(ClasseEstatica* c){
 		{
 			typedElement *auxValue = (typedElement *) malloc(sizeof(typedElement));
 			auxValue->value.l = 0;
-			string desc = dereferenceIndex(classe->getDef()->getCP(), fields[i].descriptor_index);
+			string desc = getPathReferenceIndex(classe->getDef()->getCP(), fields[i].descriptor_index);
 
 			switch (desc[0])
 			{
@@ -166,7 +166,7 @@ ClasseInstancia::ClasseInstancia(ClasseEstatica* c){
 					auxValue->type = TYPE_REFERENCE;
 					break;
 			}
-			string auxName = dereferenceIndex(classe->getDef()->getCP(), fields[i].name_index);
+			string auxName = getPathReferenceIndex(classe->getDef()->getCP(), fields[i].name_index);
 			localFields.insert(pair<string, typedElement*>(auxName, auxValue));
 		}
 	}	

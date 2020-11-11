@@ -103,8 +103,8 @@ bool Leitor::findMain () {
 
 	for (int i = 0; i < methodsCount; i++) {
 		int name = methods[i].name_index, desc = methods[i].descriptor_index, flags = methods[i].access_flags;
-		if ("main" == dereferenceIndex(constantPool, name)) {
-			if ("([Ljava/lang/String;)V" == dereferenceIndex(constantPool, desc)) {
+		if ("main" == getPathReferenceIndex(constantPool, name)) {
+			if ("([Ljava/lang/String;)V" == getPathReferenceIndex(constantPool, desc)) {
 				if ((flags & 0x09) == 0x09) {
 					mainMethod = i;
 					encontrou = true;
@@ -124,8 +124,8 @@ void Leitor::printGeneralInformation (){
 	cout << "Major version:\t\t " << majVersion << endl;
 	cout << "Constant pool count:\t " << lengthCP << endl;
 	showFlags(accessFlags);
-	cout << "This class:\t\t cp info #" << this_class << " <" << dereferenceIndex(constantPool, this_class) << ">" << endl;
-	cout << "Super class:\t\t cp info #" << super_class << " <" << dereferenceIndex(constantPool, super_class) << ">" << endl;	
+	cout << "This class:\t\t cp info #" << this_class << " <" << getPathReferenceIndex(constantPool, this_class) << ">" << endl;
+	cout << "Super class:\t\t cp info #" << super_class << " <" << getPathReferenceIndex(constantPool, super_class) << ">" << endl;	
 	cout << "Interfaces count:\t " << interfacesCount << endl;
 	cout << "Fields count:\t\t " << fieldsCount << endl;
 	cout << "Methods count:\t\t " << methodsCount << endl;
@@ -151,7 +151,7 @@ bool Leitor::findClinit() {
 
 	for (int i = 0; i < methodsCount; i++) {
 		int name = methods[i].name_index;
-		if ("<clinit>" == dereferenceIndex(constantPool, name)) {
+		if ("<clinit>" == getPathReferenceIndex(constantPool, name)) {
 			clinit = i;
 			encontrou = true;
 			break;
@@ -187,9 +187,9 @@ bool Leitor::checkClass () {
 	int auxPos;
 	
 	string auxFilename(this->fileName);
-	string auxClass = dereferenceIndex(this->constantPool, this->this_class);
+	string auxClass = getPathReferenceIndex(this->constantPool, this->this_class);
 	
-	auxFilename = auxFilename.substr(0, auxFilename.size()-6);
+	auxFilename = auxFilename.substr(0, auxFilename.size()-6); // removendo .class
 	auxPos = auxFilename.find("\\");
 	while(auxPos >= 0 && (unsigned int) auxPos <= auxFilename.size()) 	{
 		auxFilename = auxFilename.substr(auxPos+1);
@@ -202,7 +202,8 @@ bool Leitor::checkClass () {
 		auxPos = auxFilename.find("/");
 	}
 
-	return (auxClass == auxFilename);
+	//Verifica se o nome do arquivo está incluido no auxClass
+	return (auxClass.find(auxFilename) >= 0);
 }
 
 int Leitor::getStatus () {
@@ -214,22 +215,22 @@ string Leitor::getError (int error) {
 	switch (error) 
 	{
 		case MISSING_ARGUMENT:
-				ret = "Argumento invalido!\n";
+				ret = "Error: Argumento invalido!\n";
 				break;
 			case CANT_OPEN:
-				ret = "Nao foi possivel abrir o arquivo \"" + string(fileName) + "\"!\n";
+				ret = "Error: Nao foi possivel abrir o arquivo \"" + string(fileName) + "\"!\n";
 				break;
 			case INVALID_FILE:
-				ret = "Arquivo invalido!\nAssinatura \"cafe babe\" nao encontrada.\n";
+				ret = "Error: Arquivo invalido!\nAssinatura \"cafe babe\" nao encontrada.\n";
 				break;
 			case UNKNOWN_TYPE:
-				ret = "Tipo nao reconhecido para o pool de constantes!\n";
+				ret = "Error: Tipo nao reconhecido para o pool de constantes!\n";
 				break;
 			case INVALID_NAME:
-				ret = "O nome da classe definida nao bate com o do arquivo!\n";
+				ret = "Error: O nome da classe definida difere do nome do arquivo!\n";
 				break;
 			case INVALID_EXTENSION:
-				ret = "O arquivo deve ter a extensao .class!\n";
+				ret = "Error: Extensão do arquivo difere de .class!\n";
 				break;
 			default:
 				break;
@@ -306,7 +307,7 @@ field_info *Leitor::getFields() {
 
 field_info* Leitor::getField(string field_name) {
 	for(int i = 0; i < getFieldsCount(); i++) 	{
-		if(dereferenceIndex(constantPool, fields[i].name_index) == field_name )
+		if(getPathReferenceIndex(constantPool, fields[i].name_index) == field_name )
 		{
 			return fields+i; 
 		}
@@ -321,8 +322,8 @@ method_info* Leitor::getMethod(string name, string descriptor){
 	for(int i = 0; i < this->methodsCount; i++)
 	{
 		method = this->methods[i];
-		string method_name = dereferenceIndex(this->constantPool, method.name_index);
-		string method_desc = dereferenceIndex(this->constantPool, method.descriptor_index);
+		string method_name = getPathReferenceIndex(this->constantPool, method.name_index);
+		string method_desc = getPathReferenceIndex(this->constantPool, method.descriptor_index);
 
 		if(descriptor == method_desc && name == method_name) 
 		{
@@ -336,7 +337,7 @@ method_info* Leitor::getMethod(string name, string descriptor){
 	}
 	else 
 	{
-		ClasseEstatica* a = MethodArea::getClass(dereferenceIndex(this->constantPool, getSuper_class()));
+		ClasseEstatica* a = MethodArea::getClass(getPathReferenceIndex(this->constantPool, getSuper_class()));
 		Leitor* l = a->getDef();
 		
 		return l->getMethod(name, descriptor);
@@ -350,8 +351,8 @@ Leitor* Leitor::getClassThatHasSerachedMethod(string name, string descriptor){
 	{
 		method = (this->methods)+i;
 
-		string method_name = dereferenceIndex(this->constantPool, method->name_index);
-		string method_desc = dereferenceIndex(this->constantPool, method->descriptor_index);
+		string method_name = getPathReferenceIndex(this->constantPool, method->name_index);
+		string method_desc = getPathReferenceIndex(this->constantPool, method->descriptor_index);
 
 		if(descriptor == method_desc && name == method_name) 
 		{
@@ -363,7 +364,7 @@ Leitor* Leitor::getClassThatHasSerachedMethod(string name, string descriptor){
 		return NULL;
 	}
 	else {
-		Leitor* l = MethodArea::getClass(dereferenceIndex(this->constantPool, getSuper_class()))->getDef();
+		Leitor* l = MethodArea::getClass(getPathReferenceIndex(this->constantPool, getSuper_class()))->getDef();
 		return l->getClassThatHasSerachedMethod(name, descriptor);
 	}
 }

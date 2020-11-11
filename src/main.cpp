@@ -18,18 +18,19 @@ int main(int argc, char *argv[])
 	else if (argv[1][1] == 'i')
 	{
 		leitor.load();
+		int status = leitor.getStatus();
 
 		if (!leitor.hasMain())
 		{
 			printf("O arquivo %s nao possui metodo main\n", argv[2]);
 			return -1;
 		}
-		else if (leitor.getStatus())
-		{
-			return leitor.getStatus();
+		else if (status){
+			return status;
 		}
 
-		MethodArea::path = string(leitor.getPath());
+		string pathC = leitor.getPath();
+		MethodArea::path = pathC;
 		MethodArea::addClass(&leitor);
 
 		FrameStack frames(&leitor);

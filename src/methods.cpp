@@ -28,9 +28,9 @@ method_info *read_Methods (FILE* fp, int length, cp_info *cp){
 void printMethod (method_info f, cp_info *cp){
 	cout << "" << endl;
 
-	cout << "\tName: " << dereferenceIndex(cp, f.name_index) << endl;
+	cout << "\tName: " << getPathReferenceIndex(cp, f.name_index) << endl;
 
-	cout << "\tDescriptor: " << dereferenceIndex(cp, f.descriptor_index) << endl;
+	cout << "\tDescriptor: " << getPathReferenceIndex(cp, f.descriptor_index) << endl;
 
 	cout << get_Method_Flags(f.access_flags);
 
@@ -46,9 +46,9 @@ void printMethod (method_info f, cp_info *cp){
 void printMethod(method_info f, cp_info *cp, int index){
 	cout << "\tMethod " << index << ":" << endl;
 
-	cout << "\t\tName: cp info #" << f.name_index << " " << dereferenceIndex(cp, f.name_index) << endl;
+	cout << "\t\tName: cp info #" << f.name_index << " " << getPathReferenceIndex(cp, f.name_index) << endl;
 
-	cout << "\t\tDescriptor: cp info # " << f.descriptor_index << dereferenceIndex(cp, f.descriptor_index) << endl;
+	cout << "\t\tDescriptor: cp info # " << f.descriptor_index << getPathReferenceIndex(cp, f.descriptor_index) << endl;
 
 	cout << "\t" << get_Method_Flags(f.access_flags);
 	

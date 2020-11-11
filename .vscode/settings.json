@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "ios": "cpp",
+        "iostream": "cpp",
+        "utility": "cpp",
+        "map": "cpp",
+        "unordered_map": "cpp",
+        "string": "cpp",
+        "iosfwd": "cpp",
+        "chrono": "cpp"
+    }
+}

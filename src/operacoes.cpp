@@ -2419,7 +2419,7 @@ ClasseEstatica* Operacoes::getStaticClassThatHasField(ClasseEstatica* base, stri
         return NULL;
     }
 
-    ClasseEstatica* child = MethodArea::getClass(dereferenceIndex(base->getDef()->getCP(), cp_index));
+    ClasseEstatica* child = MethodArea::getClass(getPathReferenceIndex(base->getDef()->getCP(), cp_index));
     return getStaticClassThatHasField(child, field_name); 
 }
 
@@ -2437,7 +2437,7 @@ void Operacoes::getstatic()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para FIELD_REF!");
     }
 
-    string class_name = dereferenceIndex(f->cp, cp_element.info[0].u2);
+    string class_name = getPathReferenceIndex(f->cp, cp_element.info[0].u2);
 
     cp_info name_and_type_element = f->cp[cp_element.info[1].u2];
     if(name_and_type_element.tag != NAME_AND_TYPE)
@@ -2445,8 +2445,8 @@ void Operacoes::getstatic()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para NAME_AND_TYPE!");
     }
 
-    string name = dereferenceIndex(f->cp, name_and_type_element.info[0].u2);
-    string descriptor = dereferenceIndex(f->cp, name_and_type_element.info[1].u2);
+    string name = getPathReferenceIndex(f->cp, name_and_type_element.info[0].u2);
+    string descriptor = getPathReferenceIndex(f->cp, name_and_type_element.info[1].u2);
 
 
     if (class_name == "java/lang/System" && descriptor == "Ljava/io/PrintStream;" )
@@ -2489,7 +2489,7 @@ void Operacoes::putstatic()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para FIELD_REF!");
     }
 
-    string class_name = dereferenceIndex(f->cp, cp_element.info[0].u2);
+    string class_name = getPathReferenceIndex(f->cp, cp_element.info[0].u2);
 
     cp_info name_and_type_element = f->cp[cp_element.info[1].u2];
     if(name_and_type_element.tag != NAME_AND_TYPE)
@@ -2497,8 +2497,8 @@ void Operacoes::putstatic()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para NAME_AND_TYPE!");
     }
 
-    string name = dereferenceIndex(f->cp, name_and_type_element.info[0].u2);
-    string descriptor = dereferenceIndex(f->cp, name_and_type_element.info[1].u2);
+    string name = getPathReferenceIndex(f->cp, name_and_type_element.info[0].u2);
+    string descriptor = getPathReferenceIndex(f->cp, name_and_type_element.info[1].u2);
 
 
     if (class_name == "java/lang/System" && descriptor == "Ljava/io/PrintStream;" )
@@ -2539,7 +2539,7 @@ void Operacoes::getfield()
 
     int index = f->cp[indexbyte].info[1].u2;
     index = f->cp[index].info[0].u2;
-    typedElement ret = ci->getField(dereferenceIndex(f->cp, index));
+    typedElement ret = ci->getField(getPathReferenceIndex(f->cp, index));
     f->operandos->push(ret);
 }
 
@@ -2557,11 +2557,11 @@ void Operacoes::putfield()
     int index = f->cp[indexbyte].info[1].u2;
     index = f->cp[index].info[0].u2;
 
-    if (dereferenceIndex(f->cp, f->m.name_index) == "<init>")
+    if (getPathReferenceIndex(f->cp, f->m.name_index) == "<init>")
 	{
-        ci->setFinals(dereferenceIndex(f->cp, index), value);
+        ci->setFinals(getPathReferenceIndex(f->cp, index), value);
     } else {
-        ci->setField(dereferenceIndex(f->cp, index), value);
+        ci->setField(getPathReferenceIndex(f->cp, index), value);
     }
 }
 
@@ -2577,7 +2577,7 @@ void Operacoes::invokevirtual()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para METHOD_REF!");
     }
 
-    string class_name = dereferenceIndex(f->cp, cp_element.info[0].u2);
+    string class_name = getPathReferenceIndex(f->cp, cp_element.info[0].u2);
 
     cp_info name_and_type_element = f->cp[cp_element.info[1].u2];
     if(name_and_type_element.tag != NAME_AND_TYPE)
@@ -2585,8 +2585,8 @@ void Operacoes::invokevirtual()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para NAME_AND_TYPE!");
     }
 
-    string name = dereferenceIndex(f->cp, name_and_type_element.info[0].u2);
-    string descriptor = dereferenceIndex(f->cp, name_and_type_element.info[1].u2);
+    string name = getPathReferenceIndex(f->cp, name_and_type_element.info[0].u2);
+    string descriptor = getPathReferenceIndex(f->cp, name_and_type_element.info[1].u2);
 
 
     if (class_name.find("java/") != string::npos)
@@ -2759,7 +2759,7 @@ void Operacoes::invokespecial()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para METHOD_REF!");
     }
 
-    string classe = dereferenceIndex(f->cp, cp_element.info[0].u2);
+    string classe = getPathReferenceIndex(f->cp, cp_element.info[0].u2);
 
     cp_info metodo = f->cp[cp_element.info[1].u2];
     if(metodo.tag != NAME_AND_TYPE)
@@ -2767,8 +2767,8 @@ void Operacoes::invokespecial()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para NAME_AND_TYPE!");
     }
 
-    string name = dereferenceIndex(f->cp, metodo.info[0].u2);
-    string desc = dereferenceIndex(f->cp, metodo.info[1].u2);
+    string name = getPathReferenceIndex(f->cp, metodo.info[0].u2);
+    string desc = getPathReferenceIndex(f->cp, metodo.info[1].u2);
 
     
     if ((classe == "java/lang/Object" || classe == "java/lang/String") && name == "<init>")
@@ -2867,7 +2867,7 @@ void Operacoes::invokestatic()
     if(cp_element.tag != METHOD_REF)
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para METHOD_REF!");
     
-    string class_name = dereferenceIndex(f->cp, cp_element.info[0].u2);
+    string class_name = getPathReferenceIndex(f->cp, cp_element.info[0].u2);
     cp_info name_and_type_element = f->cp[cp_element.info[1].u2];
 
     if(name_and_type_element.tag != NAME_AND_TYPE)
@@ -2876,8 +2876,8 @@ void Operacoes::invokestatic()
     }
 
     
-    string name = dereferenceIndex(f->cp, name_and_type_element.info[0].u2);
-    string descriptor = dereferenceIndex(f->cp, name_and_type_element.info[1].u2);
+    string name = getPathReferenceIndex(f->cp, name_and_type_element.info[0].u2);
+    string descriptor = getPathReferenceIndex(f->cp, name_and_type_element.info[1].u2);
 
     if (class_name == "java/lang/Object" && name == "registerNatives")
 	{
@@ -2961,15 +2961,15 @@ void Operacoes::invokeinterface()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para INTERFACE_REF!");
     }
 
-    string class_name = dereferenceIndex(f->cp, cp_element.info[0].u2);
+    string class_name = getPathReferenceIndex(f->cp, cp_element.info[0].u2);
     cp_info name_and_type_element = f->cp[cp_element.info[1].u2];
     if(name_and_type_element.tag != NAME_AND_TYPE)
 	{
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para NAME_AND_TYPE!");
     }
 
-    string name = dereferenceIndex(f->cp, name_and_type_element.info[0].u2);
-    string descriptor = dereferenceIndex(f->cp, name_and_type_element.info[1].u2);
+    string name = getPathReferenceIndex(f->cp, name_and_type_element.info[0].u2);
+    string descriptor = getPathReferenceIndex(f->cp, name_and_type_element.info[1].u2);
 
     if (class_name.find("java/") != string::npos)
 	{
@@ -3040,7 +3040,7 @@ void Operacoes::invokeinterface()
 void Operacoes::func_new()
 {
     uint16_t indexbyte = getNBytesValue(2, &f->pc);
-    string classe = dereferenceIndex(f->cp, indexbyte);
+    string classe = getPathReferenceIndex(f->cp, indexbyte);
     ClasseEstatica *aux =  MethodArea::getClass(classe);
 
     if (aux == nullptr)
@@ -3162,7 +3162,7 @@ void Operacoes::multianewarray()
         throw std::runtime_error("Elemento da constant pool apontado por index, não é uma referencia para CLASS!");
     }
 
-    string class_name = dereferenceIndex(f->cp, cp_element.info[0].u2);
+    string class_name = getPathReferenceIndex(f->cp, cp_element.info[0].u2);
 
     typedElement element;
 

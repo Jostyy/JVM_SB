@@ -82,8 +82,8 @@ string getFieldFlags(unsigned short flags){
 void printField(field_info f, cp_info *cp, int index){
 	printf("\tField %d : \n", index);
 	printf("\t%s", getFieldFlags(f.accessFlags).c_str());
-	printf("\t\tNome: %s\n",  dereferenceIndex(cp, f.name_index).c_str());
-	printf("\t\tDescritor: %s\n", dereferenceIndex(cp, f.descriptor_index).c_str());
+	printf("\t\tNome: %s\n",  getPathReferenceIndex(cp, f.name_index).c_str());
+	printf("\t\tDescritor: %s\n", getPathReferenceIndex(cp, f.descriptor_index).c_str());
 	printf("\t\tNumero de Atributos: %d\n", (int) f.attributes_count);
 
 	for(int i = 0; i < f.attributes_count; i++){

@@ -20,7 +20,7 @@ t_info* readAttributeInfo(FILE* fp, cp_info *cp, unsigned short index, unsigned 
 {
   t_info* info_reading = (t_info*) malloc(sizeof(t_info));
 
-  string name_of_attribute = dereferenceIndex(cp, index);
+  string name_of_attribute = getPathReferenceIndex(cp, index);
 
   if(name_of_attribute == "ConstantValue") 
   {
@@ -128,7 +128,7 @@ void printAttributes(attribute_info* attributes, cp_info* cp, int length)
 
 void printAttribute (attribute_info a, cp_info *cp) 
 {
-  string name_of_attribute = dereferenceIndex(cp, a.name_index);
+  string name_of_attribute = getPathReferenceIndex(cp, a.name_index);
 
   cout << "\t\tName: cp info #" << a.name_index << " " <<  name_of_attribute << endl;
 
