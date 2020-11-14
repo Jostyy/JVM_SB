@@ -15,17 +15,19 @@ int main(int argc, char *argv[])
 	{
 		leitor.run();
 	}
-	else if (argv[1][1] == 'i')
-	{
+	else if (argv[1][1] == 'i'){
 		leitor.load();
 		int status = leitor.getStatus();
 
-		if (!leitor.hasMain())
-		{
-			printf("O arquivo %s nao possui metodo main\n", argv[2]);
-			return -1;
-		}
-		else if (status){
+		if(leitor.verifyStatus(status)){
+			if (!leitor.hasMain()) {
+				printf("O arquivo %s nao possui metodo main\n", argv[2]);
+				return -1;
+			}
+			else if (status){
+				return status;
+			}
+		}else{
 			return status;
 		}
 

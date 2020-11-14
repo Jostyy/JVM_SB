@@ -35,6 +35,7 @@ public:
 	void printGeneralInformation();
 	bool show();
 	bool validExtension ();
+	bool verifyStatus(int status);
 	bool hasMain();
 	method_info getMain();
 	bool hasClinit();

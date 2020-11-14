@@ -28,23 +28,19 @@ int Leitor::load() {
 	int checkCP;
 
 	if (!fileName) {
-		printf("%s\n", getError(MISSING_ARGUMENT).c_str());
 		return (status = MISSING_ARGUMENT);
 	}
 
 	if (!validExtension()) {
-		printf("%s\n", getError(INVALID_EXTENSION).c_str());
 		return (status = INVALID_EXTENSION);
 	}
 
 	fp = fopen(fileName, "rb");
 	if (fp == NULL) {
-		printf("%s\n", getError(CANT_OPEN).c_str());
 		return (status = CANT_OPEN);
 	}
 
 	if (readU4(fp) != 0xcafebabe)	{
-		printf("%s\n", getError(INVALID_FILE).c_str());
 		return (status = INVALID_FILE);
 	}
 
@@ -82,6 +78,15 @@ int Leitor::load() {
 	fclose(fp);
 	fp = NULL;
 	return (status = 0);
+}
+
+bool Leitor::verifyStatus(int status){
+	if(status == 0){
+		return true;
+	}else{
+		printf("%s\n", getError(status).c_str());
+		return false;
+	}
 }
 
 bool Leitor::show() {
