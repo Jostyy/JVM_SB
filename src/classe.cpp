@@ -1,13 +1,13 @@
-#include "../include/classe.h"
-#include "../include/pilhaOperandos.h"
+#include "classe.h"
+#include "pilhaOperandos.h"
 
 ClasseEstatica::ClasseEstatica(Leitor *classeLida){
 	int count = classeLida->getFieldsCount();
-	printf("estatica - %d", count);
 	field_info *fields = classeLida->getFields();
+	classe = classeLida;
 
 	for (int i = 0; i < count; i++){
-		if ((fields[i].accessFlags & 0x08) && (fields[i].accessFlags & 0x010) == 0)
+		if ((fields[i].accessFlags & 0x01) || (fields[i].accessFlags & 0x02) || (fields[i].accessFlags & 0x04) || (fields[i].accessFlags & 0x08))
 		{
 			typedElement *auxValue = (typedElement *) malloc(sizeof(typedElement));
 			auxValue->value.l = 0;
@@ -51,7 +51,12 @@ ClasseEstatica::ClasseEstatica(Leitor *classeLida){
 			staticFields.insert(pair<string, typedElement*>(auxName, auxValue));
 		}
 	}
-	classe = classeLida;
+}
+
+vector<ClasseInstancia*> ClasseEstatica::objetos;
+
+void ClasseEstatica::addObject(ClasseInstancia* ci) {
+	objetos.push_back(ci);
 }
 
 typedElement ClasseEstatica::getField(string s)
@@ -112,7 +117,7 @@ bool ClasseEstatica::setFinals(string s, typedElement e){
 
 ClasseInstancia *ClasseEstatica::getInstance(){
 	ClasseInstancia *objeto_classe = new ClasseInstancia(this);
-	Heap::addObject(objeto_classe);
+	ClasseEstatica::addObject(objeto_classe);
 	
 	return objeto_classe;
 }

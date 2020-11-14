@@ -1,4 +1,4 @@
-#include "../include/fields.h"
+#include "fields.h"
 
 string getFieldFlags(unsigned short flags){
 	bool first = true;

@@ -1,4 +1,4 @@
-#include "../include/methodArea.h"
+#include "methodArea.h"
 
 map<string, ClasseEstatica*> MethodArea::classes;
 string MethodArea::path = "";

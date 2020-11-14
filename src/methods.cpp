@@ -1,4 +1,4 @@
-#include "../include/methods.h"
+#include "methods.h"
 
 method_info read_Method (FILE* fp,cp_info *cp){
 	method_info aux;

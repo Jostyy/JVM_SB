@@ -1,4 +1,4 @@
-#include "../include/constantPool.h"
+#include "constantPool.h"
 
 void printConstantPool(cp_info* constantPool, int tamanhoCP) {
 	cout << "Constant Pool:" << endl;

@@ -1,4 +1,4 @@
-#include "../include/baseTypes.h"
+#include "baseTypes.h"
 
 
 U2 readU2 (FILE *fp) 

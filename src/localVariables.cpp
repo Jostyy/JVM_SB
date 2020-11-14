@@ -1,4 +1,4 @@
-#include "../include/localVariables.h"
+#include "localVariables.h"
 
 LocalVariables::LocalVariables (uint16_t maxSize) : max(maxSize), realMax(2*maxSize), dois(false){
 	elements = (uint32_t *) calloc(max*2, sizeof(uint32_t));
@@ -20,15 +20,15 @@ LocalVariables::~LocalVariables () {
 void LocalVariables::set(int index, typedElement x) {
 	
 	if (index < 0){
-		throw std::runtime_error("Indice");
+		throw std::runtime_error("Indice1");
 	}
 	index *= 2;
 
 	this->types[index] = x.type;
-
+	
 	if (this->types[index] == TYPE_LONG || this->types[index] == TYPE_DOUBLE || (this->types[index] == TYPE_REFERENCE && BITS)){
 		if (index+1 >= realMax)
-			throw std::runtime_error("Indice");
+			throw std::runtime_error("Indice2");
 
 		this->elements[index] = x.value.i;
 		this->elements[++index] = int(x.value.l >> 32);
@@ -37,7 +37,7 @@ void LocalVariables::set(int index, typedElement x) {
 	else {
 
 		if (index >= realMax){
-			throw std::runtime_error("Indice");
+			throw std::runtime_error("Indice3");
 		}
 		this->elements[index] = x.value.i;
 	}
@@ -46,7 +46,7 @@ void LocalVariables::set(int index, typedElement x) {
 typedElement LocalVariables::get(int index) const {
 	index *= 2;
 	if (index >= realMax || index < 0){
-		throw std::runtime_error("Indice");
+		throw std::runtime_error("Indice4");
 	}
 
 	if (this->types[index] == INVALID){

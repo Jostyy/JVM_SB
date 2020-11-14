@@ -1,4 +1,4 @@
-#include "../include/operacoes.h"
+#include "operacoes.h"
 
 frame *Operacoes::f = nullptr;
 stack<struct frame_s*> *Operacoes::threads = nullptr;
@@ -174,9 +174,9 @@ const fun Operacoes::functions[] =
 	&Operacoes::if_icmple,
 	&Operacoes::if_acmpeq,
 	&Operacoes::if_acmpne,
-	&Operacoes::funcgoto,
+	&Operacoes::goto_JVM,
 	&Operacoes::jsr,
-	&Operacoes::funcret,
+	&Operacoes::ret_JVM,
 	&Operacoes::tableswitch,
 	&Operacoes::lookupswitch,
 	&Operacoes::ireturn,
@@ -184,7 +184,7 @@ const fun Operacoes::functions[] =
 	&Operacoes::freturn,
 	&Operacoes::dreturn,
 	&Operacoes::areturn,
-	&Operacoes::func_return,
+	&Operacoes::return_JVM,
 	&Operacoes::getstatic,
 	&Operacoes::putstatic,
 	&Operacoes::getfield,
@@ -193,16 +193,16 @@ const fun Operacoes::functions[] =
 	&Operacoes::invokespecial,
 	&Operacoes::invokestatic,
 	&Operacoes::invokeinterface,
-	&Operacoes::nop,
-	&Operacoes::func_new,
+	&Operacoes::nop,							//invokedynamic
+	&Operacoes::new_JVM,
 	&Operacoes::newarray,
 	&Operacoes::anewarray,
 	&Operacoes::arraylength,
 	&Operacoes::athrow,
-	&Operacoes::nop,
-	&Operacoes::nop,
-	&Operacoes::nop,
-	&Operacoes::nop,
+	&Operacoes::nop,							//checkcast
+	&Operacoes::nop,							//instanceof
+	&Operacoes::nop,							//monitorenter
+	&Operacoes::nop,							//monitorexit
 	&Operacoes::wide,
 	&Operacoes::multianewarray,
 	&Operacoes::ifnull,
@@ -2218,7 +2218,7 @@ void Operacoes::if_acmpne()
 	}
 }
 
-void Operacoes::funcgoto()
+void Operacoes::goto_JVM()
 {
 	int16_t offset;
 
@@ -2239,7 +2239,7 @@ void Operacoes::jsr()
 }
 
 
-void Operacoes::funcret()
+void Operacoes::ret_JVM()
 {
 	if (isWide)
 	{
@@ -2395,7 +2395,7 @@ void Operacoes::areturn()
     f->operandos->push(value.pi);
 }
 
-void Operacoes::func_return()
+void Operacoes::return_JVM()
 {    
     while (!f->operandos->empty())
 	{
@@ -2720,33 +2720,31 @@ void Operacoes::invokevirtual()
             typedElement element = f->operandos->popTyped();
             args.insert(args.begin(), element);
         }
-
+		
         typedElement object_element = f->operandos->popTyped();
 		
-        if(object_element.type == TYPE_REFERENCE)
-        {
-    		throw runtime_error("Elemento não é uma referencia para REFERENCE!");
-            // throw std::runtime_error("");
-        }
         args.insert(args.begin(), object_element);
-
+		
         ClasseInstancia* instance = (ClasseInstancia *) object_element.value.pi;
-
+		
         
 		MethodArea::getClass(class_name);
-
+		
     
         if (threads->top() != aux)
 		{
         	f->pc = f->pc - 3;
         	return;
     	}
-
+		
         fs->addFrame(
             instance->getStatic()->getDef()->getMethod(name,descriptor), 
             instance->getStatic()->getDef()->getClassThatHasSerachedMethod(name,descriptor)->getCP()
         );
+
+		//Possible Core dump
         fs->setArguments(args);
+	
     }
 }
 
@@ -3039,7 +3037,7 @@ void Operacoes::invokeinterface()
     }
 }
 
-void Operacoes::func_new()
+void Operacoes::new_JVM()
 {
     uint16_t indexbyte = getNBytesValue(2, &f->pc);
     string classe = getPathReferenceIndex(f->cp, indexbyte);

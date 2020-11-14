@@ -1,5 +1,5 @@
 
-#include "../include/attributes.h"
+#include "attributes.h"
 
 t_exception_table* readExceptionHandler(FILE* fp)
 {

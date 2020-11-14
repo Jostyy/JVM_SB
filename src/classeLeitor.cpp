@@ -1,4 +1,4 @@
-#include "../include/classeLeitor.h"
+#include "classeLeitor.h"
 
 
 Leitor::Leitor(char *in) {

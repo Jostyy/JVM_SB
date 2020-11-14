@@ -194,9 +194,9 @@ private:
 	static void if_icmple();
 	static void if_acmpeq();
 	static void if_acmpne();
-	static void funcgoto();
+	static void goto_JVM();
 	static void jsr();
-	static void funcret();
+	static void ret_JVM();
 	static void tableswitch();
 	static void lookupswitch();
 	static void ireturn();
@@ -204,7 +204,7 @@ private:
 	static void freturn();
 	static void dreturn();
 	static void areturn();
-	static void func_return();
+	static void return_JVM();
 	static void getstatic();
 	static void putstatic();
 	static void getfield();
@@ -213,7 +213,7 @@ private:
 	static void invokespecial();
 	static void invokestatic();
 	static void invokeinterface();
-	static void func_new();
+	static void new_JVM();
 	static void newarray();
 	static void anewarray();
 	static void arraylength();

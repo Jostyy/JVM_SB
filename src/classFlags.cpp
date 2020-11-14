@@ -1,4 +1,4 @@
-#include "../include/classFlags.h"
+#include "classFlags.h"
 
 void showFlags (U2 acessoFlags){
 	bool primeiro = true;

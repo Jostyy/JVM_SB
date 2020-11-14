@@ -1,4 +1,4 @@
-#include "../include/pilhaOperandos.h"
+#include "pilhaOperandos.h"
 
 
 PilhaOperandos::PilhaOperandos (int maxSize) : realMax(maxSize), max(2*maxSize)
@@ -17,9 +17,11 @@ element PilhaOperandos::top_value()
 {
 	element ret;
 
+	ret.i = this->elementos.top();
 
 	if (this->empty())
 	{
+		printf("Ret error\n");
 		return ret;
 	}
 
@@ -43,13 +45,15 @@ element PilhaOperandos::pop()
 {
 	element ret;
 
+	ret = this->top_value();
+
 	if (this->empty())
 	{
 		return ret;
 	}
 
 
-	ret = this->top_value();
+	//ret = this->top_value();
 
 
 	this->elementos.pop();

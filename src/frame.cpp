@@ -1,4 +1,4 @@
-#include "../include/frame.h"
+#include "frame.h"
 
 FrameStack::FrameStack (Leitor *l){
 	frame *aux = (frame*) malloc(sizeof(frame));
@@ -93,11 +93,10 @@ void FrameStack::setArguments(std::vector<typedElement> param){
 	
 	for (int i = 0, j=0; (unsigned int) i < param.size(); i++, j++){
 		
-		threads.top()->locals->set(j, param[i]);
 		
+		threads.top()->locals->set(j, param[i]);
 
-		if (threads.top()->locals->get(j).type == TYPE_LONG || threads.top()->locals->get(j).type == TYPE_DOUBLE || (threads.top()->locals->get(j).type == TYPE_REFERENCE && BITS)){
-			
+		if (threads.top()->locals->get(j).type == TYPE_LONG || threads.top()->locals->get(j).type == TYPE_DOUBLE){
 			j++;
 		}
 	}
