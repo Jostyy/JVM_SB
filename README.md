@@ -8,19 +8,34 @@
 ###### Marcelo axel chiapinotto de nazaré 15/0080727
 ###### Rafael Oliveira de Souza 			 15/0081537
  
-####### Linux:
+#### USING MAKE ##################################################################################################
+
+Execute: 
+    make clean 
+
+    Mode deploy: make debug
+    Mode execution: make all
+
+#### Linux:
 
 Comandos Para usar o exibidor: ./jvm -e "nomeArquivo.class"
 Comandos Para usar a jvm: ./jvm -i "nomeArquivo.class"
 
 #### Windows:
 
+Comandos Para usar o exibidor: ./jvm -e "${CAMINHO_DO_ARQUIVO}/nomeArquivo.class"
+Comandos Para usar a jvm: ./jvm -i "${CAMINHO_DO_ARQUIVO}/nomeArquivo.class"
+
+#### USING COMMAND LINE #########################################################################################
+g++ -std=c++11 -Wall constantPool.h frame.h classeLeitor.h classFlags.h pilhaOperandos.h operacoes.h methods.h methodArea.h localVariables.h interfaces.h fields.h attributes.h baseTypes.h classe.h constantPool.cpp frame.cpp classeLeitor.cpp classFlags.cpp pilhaOperandos.cpp operacoes.cpp methods.cpp methodArea.cpp localVariables.cpp interfaces.cpp fields.cpp attributes.cpp baseTypes.cpp classe.cpp main.cpp -lm -o jvm
+
+#### Linux:
+
 Comandos Para usar o exibidor: ./jvm -e "nomeArquivo.class"
 Comandos Para usar a jvm: ./jvm -i "nomeArquivo.class"
 
-HOW TO?
+#### Windows:
 
-g++ -std=c++11 -Wall constantPool.h frame.h classeLeitor.h classFlags.h pilhaOperandos.h operacoes.h methods.h methodArea.h localVariables.h interfaces.h fields.h attributes.h baseTypes.h classe.h constantPool.cpp frame.cpp classeLeitor.cpp classFlags.cpp pilhaOperandos.cpp operacoes.cpp methods.cpp methodArea.cpp localVariables.cpp interfaces.cpp fields.cpp attributes.cpp baseTypes.cpp classe.cpp SB_test.cpp -lm -o jvm
-
-Comandos Para usar o exibidor: ./jvm -e "nomeArquivo.class"
-Comandos Para usar a jvm: ./jvm -i "nomeArquivo.class"
+Comandos Para usar o exibidor: ./jvm -e "${CAMINHO_DO_ARQUIVO}/nomeArquivo.class"
+Comandos Para usar a jvm: ./jvm -i "${CAMINHO_DO_ARQUIVO}/nomeArquivo.class"
+#### ######################################################################################################
