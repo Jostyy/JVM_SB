@@ -3,8 +3,8 @@
 
 ClasseEstatica::ClasseEstatica(Leitor *classeLida){
 	int count = classeLida->getFieldsCount();
+	printf("estatica - %d", count);
 	field_info *fields = classeLida->getFields();
-	classe = classeLida;
 
 	for (int i = 0; i < count; i++){
 		if ((fields[i].accessFlags & 0x08) && (fields[i].accessFlags & 0x010) == 0)
@@ -51,6 +51,7 @@ ClasseEstatica::ClasseEstatica(Leitor *classeLida){
 			staticFields.insert(pair<string, typedElement*>(auxName, auxValue));
 		}
 	}
+	classe = classeLida;
 }
 
 typedElement ClasseEstatica::getField(string s)

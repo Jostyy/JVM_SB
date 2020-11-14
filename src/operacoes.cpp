@@ -2722,9 +2722,11 @@ void Operacoes::invokevirtual()
         }
 
         typedElement object_element = f->operandos->popTyped();
+		
         if(object_element.type == TYPE_REFERENCE)
         {
-            throw std::runtime_error("Elemento não é uma referencia para REFERENCE!");
+    		throw runtime_error("Elemento não é uma referencia para REFERENCE!");
+            // throw std::runtime_error("");
         }
         args.insert(args.begin(), object_element);
 

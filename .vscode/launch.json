@@ -5,18 +5,26 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "CodeLens (Launch) - NonStaticClass",
+            "request": "launch",
+            "mainClass": "NonStaticClass",
+            "projectName": "JVM_SB_5a5a7001"
+        },
+        {
             "name": "Iniciar",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/jvm",
-            "args": ["-i", "${workspaceFolder}/examples/double_aritmetica.class"],
+            "args": [
+                "-i",
+                "${workspaceFolder}/examples/Fields.class"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb",
-            // "miDebuggerPath":"/usr/bin/g++",
-
+            "MIMode": "lldb"
         }
     ]
 }
