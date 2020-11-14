@@ -1,0 +1,3 @@
+﻿  frame.cpp
+D:\UnB\Software Básico\Trabalhos\SB_test\frame.cpp(32,73): warning C4018: '<': incompatibilidade de signed/unsigned
+  SB_test.vcxproj -> D:\UnB\Software Básico\Trabalhos\SB_test\Debug\SB_test.exe
