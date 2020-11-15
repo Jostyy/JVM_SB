@@ -18,7 +18,7 @@
             "program": "${workspaceFolder}/bin/jvm",
             "args": [
                 "-i",
-                "${workspaceFolder}/examples/class/PolimorfismoEReescrita.class"
+                "${workspaceFolder}/examples/class/StaticClass.class"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

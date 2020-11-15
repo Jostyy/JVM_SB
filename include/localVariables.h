@@ -31,7 +31,7 @@ private:
 	//maxima quantidade
 	const uint16_t max;
 	const uint16_t realMax;
-	//diz se ocupa 2 espaços
+	//diz se ocupa 2 espaï¿½os
 	const bool dois;
 public:
 	
