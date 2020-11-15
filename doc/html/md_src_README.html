@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Java Virtual Machine - 01/2020: README</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Java Virtual Machine - 01/2020
+   </div>
+   <div id="projectbrief">Projeto desenvolvido pelos alunos: Caio Calixto, Jean Rodrigues, Jonatas Rocha, Marcelo Axel e Rafael Oliveira</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">README </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>HOW TO?</p>
+<p>g++ -std=c++11 -Wall <a class="el" href="constantPool_8h.html" title="Módulo Constant pool.">constantPool.h</a> <a class="el" href="frame_8h.html" title="Contém tudo necessário para a execução de um método.">frame.h</a> <a class="el" href="classeLeitor_8h.html">classeLeitor.h</a> <a class="el" href="classFlags_8h.html" title="Class Flags.">classFlags.h</a> <a class="el" href="pilhaOperandos_8h.html" title="Pilha de operandos.">pilhaOperandos.h</a> <a class="el" href="operacoes_8h.html" title="Lista das operacoes realizadas pela jvm.">operacoes.h</a> <a class="el" href="methods_8h_source.html">methods.h</a> <a class="el" href="methodArea_8h.html" title="Area de Metodo.">methodArea.h</a> <a class="el" href="localVariables_8h.html" title="Local Variables.">localVariables.h</a> <a class="el" href="interfaces_8h.html" title="Interfaces.">interfaces.h</a> <a class="el" href="fields_8h.html" title="Classe field.">fields.h</a> <a class="el" href="attributes_8h.html" title="Atributos a serem usados na execuçao da JVM.">attributes.h</a> <a class="el" href="baseTypes_8h.html" title="Tipos Base Tipos básicos utilizados para implementarmos a JVM.">baseTypes.h</a> <a class="el" href="classe_8h.html" title="Definição da ClasseEstatica e da ClasseInstancia.">classe.h</a> <a class="el" href="constantPool_8cpp.html" title="constantPool">constantPool.cpp</a> <a class="el" href="frame_8cpp.html" title="frame">frame.cpp</a> <a class="el" href="classeLeitor_8cpp.html" title="classeLeitor">classeLeitor.cpp</a> <a class="el" href="classFlags_8cpp.html" title="classFlags">classFlags.cpp</a> <a class="el" href="pilhaOperandos_8cpp.html" title="Pilha de Operandos.">pilhaOperandos.cpp</a> <a class="el" href="operacoes_8cpp.html" title="operações">operacoes.cpp</a> <a class="el" href="methods_8cpp.html" title="methods">methods.cpp</a> <a class="el" href="methodArea_8cpp.html" title="methodsArea">methodArea.cpp</a> <a class="el" href="localVariables_8cpp.html" title="localVariables">localVariables.cpp</a> <a class="el" href="interfaces_8cpp.html" title="interfaces">interfaces.cpp</a> <a class="el" href="fields_8cpp.html" title="fields">fields.cpp</a> <a class="el" href="attributes_8cpp.html" title="attributes">attributes.cpp</a> <a class="el" href="baseTypes_8cpp.html" title="baseTypes">baseTypes.cpp</a> <a class="el" href="classe_8cpp.html" title="classe">classe.cpp</a> SB_test.cpp -lm -o jvm</p>
+<p>Comandos Para usar o exibidor: ./jvm -e "nomeArquivo.class" Comandos Para usar a jvm: ./jvm -i "nomeArquivo.class" </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

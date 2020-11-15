@@ -1,0 +1,100 @@
+\hypertarget{constantPool_8h}{}\doxysection{Referência ao ficheiro include/constant\+Pool.h}
+\label{constantPool_8h}\index{include/constantPool.h@{include/constantPool.h}}
+
+
+Módulo Constant pool.  
+
+
+{\ttfamily \#include \char`\"{}base\+Types.\+h\char`\"{}}\newline
+Diagrama de dependências de inclusão para constant\+Pool.\+h\+:
+% FIG 0
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:
+% FIG 1
+\doxysubsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcp__info}{cp\+\_\+info}}
+\begin{DoxyCompactList}\small\item\em Possui um elemento pool de constante. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constantPool_8h_adf770fe2eec438e3758ffe905dbae208}\label{constantPool_8h_adf770fe2eec438e3758ffe905dbae208}} 
+\#define {\bfseries I\+N\+V\+A\+L\+ID}~99
+\item 
+\mbox{\Hypertarget{constantPool_8h_af9a8bd70343e082dbc63ac806b8ced24}\label{constantPool_8h_af9a8bd70343e082dbc63ac806b8ced24}} 
+\#define {\bfseries U\+T\+F8}~1
+\item 
+\mbox{\Hypertarget{constantPool_8h_a91d43eadec33c80149f92e5abf5df58c}\label{constantPool_8h_a91d43eadec33c80149f92e5abf5df58c}} 
+\#define {\bfseries I\+N\+T\+E\+G\+ER}~3
+\item 
+\mbox{\Hypertarget{constantPool_8h_ae8690abbffa85934d64d545920e2b108}\label{constantPool_8h_ae8690abbffa85934d64d545920e2b108}} 
+\#define {\bfseries F\+L\+O\+AT}~4
+\item 
+\mbox{\Hypertarget{constantPool_8h_acaa7b8a7167a8214f499c71c413ddcca}\label{constantPool_8h_acaa7b8a7167a8214f499c71c413ddcca}} 
+\#define {\bfseries L\+O\+NG}~5
+\item 
+\mbox{\Hypertarget{constantPool_8h_a8747af38b86aa2bbcda2f1b1aa0888c2}\label{constantPool_8h_a8747af38b86aa2bbcda2f1b1aa0888c2}} 
+\#define {\bfseries D\+O\+U\+B\+LE}~6
+\item 
+\mbox{\Hypertarget{constantPool_8h_aeb04f2e0012cb07d68538599161c9693}\label{constantPool_8h_aeb04f2e0012cb07d68538599161c9693}} 
+\#define {\bfseries C\+L\+A\+SS}~7
+\item 
+\mbox{\Hypertarget{constantPool_8h_a0f4d394a3ab4e09bff60f714c66dc5ee}\label{constantPool_8h_a0f4d394a3ab4e09bff60f714c66dc5ee}} 
+\#define {\bfseries S\+T\+R\+I\+NG}~8
+\item 
+\mbox{\Hypertarget{constantPool_8h_a961f6036be890ad905abf769f04099fb}\label{constantPool_8h_a961f6036be890ad905abf769f04099fb}} 
+\#define {\bfseries F\+I\+E\+L\+D\+\_\+\+R\+EF}~9
+\item 
+\mbox{\Hypertarget{constantPool_8h_a4bb1d2e6bfe342f8f25c01e8feab94f6}\label{constantPool_8h_a4bb1d2e6bfe342f8f25c01e8feab94f6}} 
+\#define {\bfseries M\+E\+T\+H\+O\+D\+\_\+\+R\+EF}~10
+\item 
+\mbox{\Hypertarget{constantPool_8h_a192895ca38ee080d81750923e92639db}\label{constantPool_8h_a192895ca38ee080d81750923e92639db}} 
+\#define {\bfseries I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+R\+EF}~11
+\item 
+\mbox{\Hypertarget{constantPool_8h_ab69e20acf60d75560d828fd8e89d8a39}\label{constantPool_8h_ab69e20acf60d75560d828fd8e89d8a39}} 
+\#define {\bfseries N\+A\+M\+E\+\_\+\+A\+N\+D\+\_\+\+T\+Y\+PE}~12
+\end{DoxyCompactItemize}
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constantPool_8h_a535d3072739208def76d774000fa3973}\label{constantPool_8h_a535d3072739208def76d774000fa3973}} 
+int {\bfseries load\+Constant\+Pool} (\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$constant\+Pool, int tamanho\+CP, F\+I\+LE $\ast$fp)
+\item 
+\mbox{\Hypertarget{constantPool_8h_a6dd2d879553b6befe97b4c72dceaff7e}\label{constantPool_8h_a6dd2d879553b6befe97b4c72dceaff7e}} 
+string {\bfseries get\+Path\+Reference\+Index} (\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, U2 index)
+\item 
+void \mbox{\hyperlink{constantPool_8h_ad58013744f2dbde35519b4bb4549a493}{print\+Constant\+Pool}} (\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$constant\+Pool, int tamanho\+CP)
+\begin{DoxyCompactList}\small\item\em Imprime o pool de constantes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constantPool_8h_aabf3d9e746ea5b69b031bd8eb1a71421}\label{constantPool_8h_aabf3d9e746ea5b69b031bd8eb1a71421}} 
+const string \mbox{\hyperlink{constantPool_8h_aabf3d9e746ea5b69b031bd8eb1a71421}{type\+Names}} \mbox{[}$\,$\mbox{]} = \{\char`\"{}U\+TF-\/8\char`\"{}, \char`\"{}-\/\char`\"{}, \char`\"{}Integer\char`\"{}, \char`\"{}Float\char`\"{}, \char`\"{}Long\char`\"{}, \char`\"{}Double\char`\"{}, \char`\"{}Class\char`\"{}, \char`\"{}String\char`\"{}, \char`\"{}Field\char`\"{}, \char`\"{}Method\char`\"{}, \char`\"{}Interface\char`\"{}, \char`\"{}Name and Type\char`\"{}\}
+\begin{DoxyCompactList}\small\item\em Formatos dos dados no pool de constantes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Módulo Constant pool. 
+
+Este módulo contém as funções necessárias para a manipulação do pool de constantes. 
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{constantPool_8h_ad58013744f2dbde35519b4bb4549a493}\label{constantPool_8h_ad58013744f2dbde35519b4bb4549a493}} 
+\index{constantPool.h@{constantPool.h}!printConstantPool@{printConstantPool}}
+\index{printConstantPool@{printConstantPool}!constantPool.h@{constantPool.h}}
+\doxysubsubsection{\texorpdfstring{printConstantPool()}{printConstantPool()}}
+{\footnotesize\ttfamily void print\+Constant\+Pool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{constant\+Pool,  }\item[{int}]{tamanho\+CP }\end{DoxyParamCaption})}
+
+
+
+Imprime o pool de constantes. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em constant\+Pool} & -\/ um ponteiro para o pool de contantes \\
+\hline
+{\em length\+CP} & -\/ o tamanho do pool de constantes \\
+\hline
+\end{DoxyParams}
+\hypertarget{constantPool_8cpp_desc}{}\doxysubsection{Descrição}\label{constantPool_8cpp_desc}
+Função responsável por imprimir na tela o pool de constantes e todos os campos a ele relacionados 

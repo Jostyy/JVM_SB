@@ -1,0 +1,218 @@
+\hypertarget{attributes_8h}{}\doxysection{Referência ao ficheiro include/attributes.h}
+\label{attributes_8h}\index{include/attributes.h@{include/attributes.h}}
+
+
+Atributos a serem usados na execuçao da J\+VM.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}constant\+Pool.\+h\char`\"{}}\newline
+Diagrama de dependências de inclusão para attributes.\+h\+:
+% FIG 0
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:
+% FIG 1
+\doxysubsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structconstantvalue__attribute}{constantvalue\+\_\+attribute}}
+\begin{DoxyCompactList}\small\item\em Struct para carregar o index dos atributos da \char`\"{}constantpool\char`\"{}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structt__exception__table}{t\+\_\+exception\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em Struct para salvar exceções identificadas. Será utilizada como componente da struct \char`\"{}code\+\_\+attribute\char`\"{}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcode__attribute}{code\+\_\+attribute}}
+\begin{DoxyCompactList}\small\item\em Estrutura de dados para salvar atributos do tipo code. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structexception__attribute}{exception\+\_\+attribute}}
+\begin{DoxyCompactList}\small\item\em Estrutura de dados para salvar atributos de tipo \char`\"{}exception\char`\"{}. \end{DoxyCompactList}\item 
+union \mbox{\hyperlink{uniont__info}{t\+\_\+info}}
+\begin{DoxyCompactList}\small\item\em Estrutura de dados que agrega informações sobre cada atributo lido. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}}
+\begin{DoxyCompactList}\small\item\em Estrutura de dados para salvar a posição do atributo na constantpool e seu tamanho. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__exception__table}{t\+\_\+exception\+\_\+table}} $\ast$ \mbox{\hyperlink{attributes_8h_a7074ce92141e1009d4bfcbc1eda14ddb}{read\+Exception\+Handler}} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Função de leitura de exceções. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{uniont__info}{t\+\_\+info}} $\ast$ \mbox{\hyperlink{attributes_8h_aaf5bf869e6d94d4dbf72884249a91431}{read\+Attribute\+Info}} (F\+I\+LE $\ast$fp, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, unsigned short index, unsigned short length)
+\begin{DoxyCompactList}\small\item\em Faz a leitura das informações de um atributo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}} \mbox{\hyperlink{attributes_8h_a1f014ecafdc1b309e228f89cff54d61e}{read\+Attribute}} (F\+I\+LE $\ast$fp, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp)
+\begin{DoxyCompactList}\small\item\em Faz a leitura de um atributo da constantpool. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}} $\ast$ \mbox{\hyperlink{attributes_8h_a5c71ba95361a6edba510b40abaa69364}{read\+Attributes}} (F\+I\+LE $\ast$fp, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, int length)
+\begin{DoxyCompactList}\small\item\em Faz a leitura de n atributos da constantpool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{attributes_8h_a7d86b22b81ca886f4457ef3af7a1c5a4}{print\+Attribute}} (\mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}} a, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp)
+\begin{DoxyCompactList}\small\item\em Função que imprime na tela informações de um atributo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{attributes_8h_a6f7d6e88ba48f5785ff23706abb0b030}{print\+Attributes}} (\mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}} $\ast$attributes, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, int length)
+\begin{DoxyCompactList}\small\item\em Função que imprime na tela informações de n atributos. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{attributes_8h_a9e977ee82ad332d38ff903bee3228b59}{get\+Mnemonic}} (int opcode)
+\begin{DoxyCompactList}\small\item\em Returna o nome da operação. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{attributes_8h_ad621a8d31d5756d1512f170c4325bd66}{get\+N\+Bytes\+Value}} (uint8\+\_\+t n, unsigned char $\ast$code, int $\ast$index)
+\begin{DoxyCompactList}\small\item\em Função para retornar o conteúdo dos próximos n bytes ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{attributes_8h_abc6861f293222814bd642ffc5dfa5777}{get\+Opcode\+Params}} (unsigned char $\ast$code, int $\ast$index)
+\begin{DoxyCompactList}\small\item\em Função que mostra na tela os parâmetros dos opcodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Atributos a serem usados na execuçao da J\+VM. 
+
+
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{attributes_8h_a9e977ee82ad332d38ff903bee3228b59}\label{attributes_8h_a9e977ee82ad332d38ff903bee3228b59}} 
+\index{attributes.h@{attributes.h}!getMnemonic@{getMnemonic}}
+\index{getMnemonic@{getMnemonic}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{getMnemonic()}{getMnemonic()}}
+{\footnotesize\ttfamily string get\+Mnemonic (\begin{DoxyParamCaption}\item[{int}]{opcode }\end{DoxyParamCaption})}
+
+
+
+Returna o nome da operação. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em opcode} & Opcode de operações da J\+VM \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{attributes_8h_ad621a8d31d5756d1512f170c4325bd66}\label{attributes_8h_ad621a8d31d5756d1512f170c4325bd66}} 
+\index{attributes.h@{attributes.h}!getNBytesValue@{getNBytesValue}}
+\index{getNBytesValue@{getNBytesValue}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{getNBytesValue()}{getNBytesValue()}}
+{\footnotesize\ttfamily uint32\+\_\+t get\+N\+Bytes\+Value (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{n,  }\item[{unsigned char $\ast$}]{code,  }\item[{int $\ast$}]{index }\end{DoxyParamCaption})}
+
+
+
+Função para retornar o conteúdo dos próximos n bytes ~\newline
+ 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em n} & Número de bytes a serem lidos. \\
+\hline
+{\em code} & Ponteiro pra um vetor de bytes. \\
+\hline
+{\em index} & Posição do opcode no vetor. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{attributes_8h_abc6861f293222814bd642ffc5dfa5777}\label{attributes_8h_abc6861f293222814bd642ffc5dfa5777}} 
+\index{attributes.h@{attributes.h}!getOpcodeParams@{getOpcodeParams}}
+\index{getOpcodeParams@{getOpcodeParams}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{getOpcodeParams()}{getOpcodeParams()}}
+{\footnotesize\ttfamily void get\+Opcode\+Params (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{code,  }\item[{int $\ast$}]{index }\end{DoxyParamCaption})}
+
+
+
+Função que mostra na tela os parâmetros dos opcodes. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em code} & Pointer of bytes wich are code and your arg. Ponteiro para vetor de bytes do código e seus parâemtros. \\
+\hline
+{\em index} & Posição na constantpool. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{attributes_8h_a7d86b22b81ca886f4457ef3af7a1c5a4}\label{attributes_8h_a7d86b22b81ca886f4457ef3af7a1c5a4}} 
+\index{attributes.h@{attributes.h}!printAttribute@{printAttribute}}
+\index{printAttribute@{printAttribute}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{printAttribute()}{printAttribute()}}
+{\footnotesize\ttfamily void print\+Attribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}}}]{a,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp }\end{DoxyParamCaption})}
+
+
+
+Função que imprime na tela informações de um atributo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em cp} & Poteiro pra constant pool. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{attributes_8h_a6f7d6e88ba48f5785ff23706abb0b030}\label{attributes_8h_a6f7d6e88ba48f5785ff23706abb0b030}} 
+\index{attributes.h@{attributes.h}!printAttributes@{printAttributes}}
+\index{printAttributes@{printAttributes}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{printAttributes()}{printAttributes()}}
+{\footnotesize\ttfamily void print\+Attributes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}} $\ast$}]{attributes,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Função que imprime na tela informações de n atributos. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em attributes} & Pointer to struct of types att. \\
+\hline
+{\em cp} & Poteiro pra constant pool. \\
+\hline
+{\em length} & Number of times of the function print\+Attribute gonna be called. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{attributes_8h_a1f014ecafdc1b309e228f89cff54d61e}\label{attributes_8h_a1f014ecafdc1b309e228f89cff54d61e}} 
+\index{attributes.h@{attributes.h}!readAttribute@{readAttribute}}
+\index{readAttribute@{readAttribute}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{readAttribute()}{readAttribute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}} read\+Attribute (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp }\end{DoxyParamCaption})}
+
+
+
+Faz a leitura de um atributo da constantpool. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fp} & Ponteiro pro arquivo .class. \\
+\hline
+{\em cp} & Pointeiro pra constantpool. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{attributes_8h_aaf5bf869e6d94d4dbf72884249a91431}\label{attributes_8h_aaf5bf869e6d94d4dbf72884249a91431}} 
+\index{attributes.h@{attributes.h}!readAttributeInfo@{readAttributeInfo}}
+\index{readAttributeInfo@{readAttributeInfo}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{readAttributeInfo()}{readAttributeInfo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{uniont__info}{t\+\_\+info}}$\ast$ read\+Attribute\+Info (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp,  }\item[{unsigned short}]{index,  }\item[{unsigned short}]{length }\end{DoxyParamCaption})}
+
+
+
+Faz a leitura das informações de um atributo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fp} & Ponteirp para arquivo .class. \\
+\hline
+{\em cp} & Ponteiro pra constantpool. \\
+\hline
+{\em Posição} & do atributo na constantpool. \\
+\hline
+{\em Tamanho} & em bytes do atributo a ser lido. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{attributes_8h_a5c71ba95361a6edba510b40abaa69364}\label{attributes_8h_a5c71ba95361a6edba510b40abaa69364}} 
+\index{attributes.h@{attributes.h}!readAttributes@{readAttributes}}
+\index{readAttributes@{readAttributes}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{readAttributes()}{readAttributes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structattribute__info}{attribute\+\_\+info}}$\ast$ read\+Attributes (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Faz a leitura de n atributos da constantpool. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fp} & Ponteiro pro arquivo .class. \\
+\hline
+{\em cp} & Poteiro pra constant pool. \\
+\hline
+{\em length} & Número de atributos. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{attributes_8h_a7074ce92141e1009d4bfcbc1eda14ddb}\label{attributes_8h_a7074ce92141e1009d4bfcbc1eda14ddb}} 
+\index{attributes.h@{attributes.h}!readExceptionHandler@{readExceptionHandler}}
+\index{readExceptionHandler@{readExceptionHandler}!attributes.h@{attributes.h}}
+\doxysubsubsection{\texorpdfstring{readExceptionHandler()}{readExceptionHandler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__exception__table}{t\+\_\+exception\+\_\+table}}$\ast$ read\+Exception\+Handler (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Função de leitura de exceções. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fp} & Ponteiro para arquivo tipo .class \\
+\hline
+\end{DoxyParams}

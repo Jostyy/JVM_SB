@@ -1,0 +1,103 @@
+\hypertarget{methods_8cpp}{}\doxysection{Referência ao ficheiro src/methods.cpp}
+\label{methods_8cpp}\index{src/methods.cpp@{src/methods.cpp}}
+
+
+methods  
+
+
+{\ttfamily \#include \char`\"{}methods.\+h\char`\"{}}\newline
+Diagrama de dependências de inclusão para methods.\+cpp\+:
+% FIG 0
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmethod__info}{method\+\_\+info}} \mbox{\hyperlink{methods_8cpp_a6a63a7a4141f4b3980700b2ca7700bd8}{read\+\_\+\+Method}} (F\+I\+LE $\ast$fp, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp)
+\begin{DoxyCompactList}\small\item\em Lê um método do arquivo .class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmethod__info}{method\+\_\+info}} $\ast$ \mbox{\hyperlink{methods_8cpp_a3ad80da340e7096c0e560831d29eea7d}{read\+\_\+\+Methods}} (F\+I\+LE $\ast$fp, int length, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp)
+\begin{DoxyCompactList}\small\item\em Lê os métodos do arquivo .class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{methods_8cpp_a0e1b70eb6c59644f44aff4ddf99b29b2}{print\+Method}} (\mbox{\hyperlink{structmethod__info}{method\+\_\+info}} f, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp)
+\begin{DoxyCompactList}\small\item\em Mostra um método do arquivo .class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{methods_8cpp_a8d3c8f600b6ae12145f5efb625284033}\label{methods_8cpp_a8d3c8f600b6ae12145f5efb625284033}} 
+void {\bfseries print\+Method} (\mbox{\hyperlink{structmethod__info}{method\+\_\+info}} f, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, int index)
+\item 
+\mbox{\Hypertarget{methods_8cpp_abea5c808ee0cfbda57b80c8433003119}\label{methods_8cpp_abea5c808ee0cfbda57b80c8433003119}} 
+void {\bfseries print\+Methods} (\mbox{\hyperlink{structmethod__info}{method\+\_\+info}} $\ast$f, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, int length)
+\item 
+string \mbox{\hyperlink{methods_8cpp_ac95705fbcdbb15765a17c3bf1b53e506}{get\+\_\+\+Method\+\_\+\+Flags}} (uint16\+\_\+t flags)
+\begin{DoxyCompactList}\small\item\em Obtém as access flags dos métodos para print. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+methods 
+
+
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{methods_8cpp_ac95705fbcdbb15765a17c3bf1b53e506}\label{methods_8cpp_ac95705fbcdbb15765a17c3bf1b53e506}} 
+\index{methods.cpp@{methods.cpp}!get\_Method\_Flags@{get\_Method\_Flags}}
+\index{get\_Method\_Flags@{get\_Method\_Flags}!methods.cpp@{methods.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_Method\_Flags()}{get\_Method\_Flags()}}
+{\footnotesize\ttfamily get\+\_\+\+Method\+\_\+\+Flags (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{flags }\end{DoxyParamCaption})}
+
+
+
+Obtém as access flags dos métodos para print. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em flags} & dos métodos dado method\+\_\+info.\+access\+\_\+flags \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{methods_8cpp_a0e1b70eb6c59644f44aff4ddf99b29b2}\label{methods_8cpp_a0e1b70eb6c59644f44aff4ddf99b29b2}} 
+\index{methods.cpp@{methods.cpp}!printMethod@{printMethod}}
+\index{printMethod@{printMethod}!methods.cpp@{methods.cpp}}
+\doxysubsubsection{\texorpdfstring{printMethod()}{printMethod()}}
+{\footnotesize\ttfamily print\+Method (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmethod__info}{method\+\_\+info}}}]{f,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp }\end{DoxyParamCaption})}
+
+
+
+Mostra um método do arquivo .class. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em f} & contém as informações do método \\
+\hline
+{\em $\ast$cp} & ponteiro para as informações do pool de constantes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{methods_8cpp_a6a63a7a4141f4b3980700b2ca7700bd8}\label{methods_8cpp_a6a63a7a4141f4b3980700b2ca7700bd8}} 
+\index{methods.cpp@{methods.cpp}!read\_Method@{read\_Method}}
+\index{read\_Method@{read\_Method}!methods.cpp@{methods.cpp}}
+\doxysubsubsection{\texorpdfstring{read\_Method()}{read\_Method()}}
+{\footnotesize\ttfamily read\+\_\+\+Method (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp }\end{DoxyParamCaption})}
+
+
+
+Lê um método do arquivo .class. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$fp} & ponteiro para o arquivo .class \\
+\hline
+{\em $\ast$cp} & ponteiro para as informações do pool de constantes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{methods_8cpp_a3ad80da340e7096c0e560831d29eea7d}\label{methods_8cpp_a3ad80da340e7096c0e560831d29eea7d}} 
+\index{methods.cpp@{methods.cpp}!read\_Methods@{read\_Methods}}
+\index{read\_Methods@{read\_Methods}!methods.cpp@{methods.cpp}}
+\doxysubsubsection{\texorpdfstring{read\_Methods()}{read\_Methods()}}
+{\footnotesize\ttfamily read\+\_\+\+Methods (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int}]{length,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp }\end{DoxyParamCaption})}
+
+
+
+Lê os métodos do arquivo .class. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$fp} & ponteiro para o arquivo .class \\
+\hline
+{\em $\ast$cp} & ponteiro para as informações do pool de constantes \\
+\hline
+{\em length} & quantidade de métodos presente \\
+\hline
+\end{DoxyParams}

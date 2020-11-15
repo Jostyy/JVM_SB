@@ -1,0 +1,233 @@
+\hypertarget{baseTypes_8cpp}{}\doxysection{Referência ao ficheiro src/base\+Types.cpp}
+\label{baseTypes_8cpp}\index{src/baseTypes.cpp@{src/baseTypes.cpp}}
+
+
+base\+Types  
+
+
+{\ttfamily \#include \char`\"{}base\+Types.\+h\char`\"{}}\newline
+Diagrama de dependências de inclusão para base\+Types.\+cpp\+:
+% FIG 0
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+U2 \mbox{\hyperlink{baseTypes_8cpp_a81f8cf10d3f1ee282c2f124ebf00b718}{read\+U2}} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Função para ler 2 bytes do arquivo .class. \end{DoxyCompactList}\item 
+U1 \mbox{\hyperlink{baseTypes_8cpp_a8a134c72da9699c32dbec57627955328}{read\+U1}} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Função para ler 1 byte do arquivo .class. \end{DoxyCompactList}\item 
+U1 $\ast$ \mbox{\hyperlink{baseTypes_8cpp_aa8607f57d05a9bb119626bfb04410131}{read\+U\+T\+F8}} (F\+I\+LE $\ast$fp, int size)
+\begin{DoxyCompactList}\small\item\em Função para ler os bytes de uma string U\+T\+F-\/8. \end{DoxyCompactList}\item 
+U4 \mbox{\hyperlink{baseTypes_8cpp_a836a4be80a9f428623a68e687e6c30c6}{read\+U4}} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Função para ler 4 bytes do arquivo .class. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{baseTypes_8cpp_a22f1f8c2b398f9db39f18565b36986f1}{show\+U\+T\+F8}} (unsigned char $\ast$s, int size)
+\begin{DoxyCompactList}\small\item\em Função para montar e mostrar a uma string U\+T\+F-\/8. \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{baseTypes_8cpp_a5b4ee2146dd5beafbac7709a37bdbbd2}{u4\+\_\+to\+\_\+long}} (\mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}} high, \mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}} low)
+\begin{DoxyCompactList}\small\item\em Função para converter 8 bytes em long. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{baseTypes_8cpp_a51bdc30e142e0a9d888eb56ce9b5484b}{u4\+\_\+to\+\_\+double}} (\mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}} high, \mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}} low)
+\begin{DoxyCompactList}\small\item\em Função para converter 8 bytes em double. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{baseTypes_8cpp_a0f3ffb86bcc68531d481dd68c556b086}{u4\+\_\+to\+\_\+float}} (\mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}} in)
+\begin{DoxyCompactList}\small\item\em Função para converter 4 bytes em float. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{baseTypes_8cpp_a35ee76375b4843822c2f7dec234ae0eb}{double\+\_\+to\+\_\+string}} (double d)
+\begin{DoxyCompactList}\small\item\em Função para converter double para string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{baseTypes_8cpp_a871378ebfdafb26a99e3108b15e70a98}{check\+Float}} (float f)
+\begin{DoxyCompactList}\small\item\em Função para verificar NaN e infinito. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{baseTypes_8cpp_a7e9defed00ed2d5b820a06a3ecbfffaf}{check\+Double}} (double d)
+\begin{DoxyCompactList}\small\item\em Função para verificar NaN e infinito. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{baseTypes_8cpp_a6144b769255fad600d6a8339de3c637c}{float\+\_\+to\+\_\+string}} (float f)
+\begin{DoxyCompactList}\small\item\em Função para converter float para string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+base\+Types 
+
+
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{baseTypes_8cpp_a7e9defed00ed2d5b820a06a3ecbfffaf}\label{baseTypes_8cpp_a7e9defed00ed2d5b820a06a3ecbfffaf}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!checkDouble@{checkDouble}}
+\index{checkDouble@{checkDouble}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{checkDouble()}{checkDouble()}}
+{\footnotesize\ttfamily int check\+Double (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption})}
+
+
+
+Função para verificar NaN e infinito. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em double} & Number to be checked. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a871378ebfdafb26a99e3108b15e70a98}\label{baseTypes_8cpp_a871378ebfdafb26a99e3108b15e70a98}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!checkFloat@{checkFloat}}
+\index{checkFloat@{checkFloat}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{checkFloat()}{checkFloat()}}
+{\footnotesize\ttfamily int check\+Float (\begin{DoxyParamCaption}\item[{float}]{f }\end{DoxyParamCaption})}
+
+
+
+Função para verificar NaN e infinito. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em float} & Número a ser verificado. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a35ee76375b4843822c2f7dec234ae0eb}\label{baseTypes_8cpp_a35ee76375b4843822c2f7dec234ae0eb}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!double\_to\_string@{double\_to\_string}}
+\index{double\_to\_string@{double\_to\_string}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{double\_to\_string()}{double\_to\_string()}}
+{\footnotesize\ttfamily string double\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption})}
+
+
+
+Função para converter double para string. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em double} & Número a ser convertido. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a6144b769255fad600d6a8339de3c637c}\label{baseTypes_8cpp_a6144b769255fad600d6a8339de3c637c}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!float\_to\_string@{float\_to\_string}}
+\index{float\_to\_string@{float\_to\_string}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{float\_to\_string()}{float\_to\_string()}}
+{\footnotesize\ttfamily string float\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{float}]{f }\end{DoxyParamCaption})}
+
+
+
+Função para converter float para string. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em float} & Número a ser convertido. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a8a134c72da9699c32dbec57627955328}\label{baseTypes_8cpp_a8a134c72da9699c32dbec57627955328}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!readU1@{readU1}}
+\index{readU1@{readU1}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{readU1()}{readU1()}}
+{\footnotesize\ttfamily U1 read\+U1 (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Função para ler 1 byte do arquivo .class. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fp.} & Ponteiro pro arquivo .class \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a81f8cf10d3f1ee282c2f124ebf00b718}\label{baseTypes_8cpp_a81f8cf10d3f1ee282c2f124ebf00b718}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!readU2@{readU2}}
+\index{readU2@{readU2}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{readU2()}{readU2()}}
+{\footnotesize\ttfamily U2 read\+U2 (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Função para ler 2 bytes do arquivo .class. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fp.} & Ponteiro pro arquivo .class \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a836a4be80a9f428623a68e687e6c30c6}\label{baseTypes_8cpp_a836a4be80a9f428623a68e687e6c30c6}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!readU4@{readU4}}
+\index{readU4@{readU4}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{readU4()}{readU4()}}
+{\footnotesize\ttfamily U4 read\+U4 (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Função para ler 4 bytes do arquivo .class. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fp.} & Ponteiro pro arquivo .class \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_aa8607f57d05a9bb119626bfb04410131}\label{baseTypes_8cpp_aa8607f57d05a9bb119626bfb04410131}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!readUTF8@{readUTF8}}
+\index{readUTF8@{readUTF8}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{readUTF8()}{readUTF8()}}
+{\footnotesize\ttfamily U1 $\ast$ read\+U\+T\+F8 (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Função para ler os bytes de uma string U\+T\+F-\/8. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fp.} & Ponteiro pro arquivo .class \\
+\hline
+{\em size} & Tamanho que será alocado para a string. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a22f1f8c2b398f9db39f18565b36986f1}\label{baseTypes_8cpp_a22f1f8c2b398f9db39f18565b36986f1}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!showUTF8@{showUTF8}}
+\index{showUTF8@{showUTF8}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{showUTF8()}{showUTF8()}}
+{\footnotesize\ttfamily string show\+U\+T\+F8 (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{s,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Função para montar e mostrar a uma string U\+T\+F-\/8. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em s} & Ponteiro para a posição inicial de uma string Unicode. \\
+\hline
+{\em size} & Tamanho da string a ser impressa. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a51bdc30e142e0a9d888eb56ce9b5484b}\label{baseTypes_8cpp_a51bdc30e142e0a9d888eb56ce9b5484b}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!u4\_to\_double@{u4\_to\_double}}
+\index{u4\_to\_double@{u4\_to\_double}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{u4\_to\_double()}{u4\_to\_double()}}
+{\footnotesize\ttfamily double u4\+\_\+to\+\_\+double (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}}}]{high,  }\item[{\mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}}}]{low }\end{DoxyParamCaption})}
+
+
+
+Função para converter 8 bytes em double. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em high} & 4 bytes mais significativos a ser convertido \\
+\hline
+{\em low} & 4 bytes menos significativos a ser convertido \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a0f3ffb86bcc68531d481dd68c556b086}\label{baseTypes_8cpp_a0f3ffb86bcc68531d481dd68c556b086}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!u4\_to\_float@{u4\_to\_float}}
+\index{u4\_to\_float@{u4\_to\_float}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{u4\_to\_float()}{u4\_to\_float()}}
+{\footnotesize\ttfamily float u4\+\_\+to\+\_\+float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}}}]{in }\end{DoxyParamCaption})}
+
+
+
+Função para converter 4 bytes em float. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em in} & Four bytes to be converted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{baseTypes_8cpp_a5b4ee2146dd5beafbac7709a37bdbbd2}\label{baseTypes_8cpp_a5b4ee2146dd5beafbac7709a37bdbbd2}} 
+\index{baseTypes.cpp@{baseTypes.cpp}!u4\_to\_long@{u4\_to\_long}}
+\index{u4\_to\_long@{u4\_to\_long}!baseTypes.cpp@{baseTypes.cpp}}
+\doxysubsubsection{\texorpdfstring{u4\_to\_long()}{u4\_to\_long()}}
+{\footnotesize\ttfamily long u4\+\_\+to\+\_\+long (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}}}]{high,  }\item[{\mbox{\hyperlink{unionClassLoaderType}{Class\+Loader\+Type}}}]{low }\end{DoxyParamCaption})}
+
+
+
+Função para converter 8 bytes em long. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em high} & 4 bytes mais significativos a ser convertido \\
+\hline
+{\em low} & 4 bytes menos significativos a ser convertido \\
+\hline
+\end{DoxyParams}

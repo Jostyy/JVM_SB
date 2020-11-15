@@ -1,0 +1,36 @@
+digraph "include/frame.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="include/frame.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Contém tudo necessário para a execução de um método."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="src/frame.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$frame_8cpp.html",tooltip="frame"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="Funcao principal do projeto, opção de escolha entre interpretador e exibidor."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="include/methodArea.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$methodArea_8h.html",tooltip="Area de Metodo."];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="src/methodArea.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$methodArea_8cpp.html",tooltip="methodsArea"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="include/classeLeitor.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeLeitor_8h.html",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="src/classeLeitor.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeLeitor_8cpp.html",tooltip="classeLeitor"];
+  Node6 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="include/classe.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classe_8h.html",tooltip="Definição da ClasseEstatica e da ClasseInstancia."];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="src/classe.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classe_8cpp.html",tooltip="classe"];
+  Node8 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="include/operacoes.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$operacoes_8h.html",tooltip="Lista das operacoes realizadas pela jvm."];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="src/operacoes.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$operacoes_8cpp.html",tooltip="operações"];
+  Node10 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Java Virtual Machine - 01/2020: Código-Fonte de include/interfaces.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Java Virtual Machine - 01/2020
+   </div>
+   <div id="projectbrief">Projeto desenvolvido pelos alunos: Caio Calixto, Jean Rodrigues, Jonatas Rocha, Marcelo Axel e Rafael Oliveira</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">interfaces.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="interfaces_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef INTERFACES_H</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define INTERFACES_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="constantPool_8h.html">constantPool.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="baseTypes_8h.html">baseTypes.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> *<a class="code" href="interfaces_8h.html#ae922cb6cdd2af5a0da3f039d03b230c7">readInterfaces</a> (FILE *fp, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interfaces_8h.html#a6ec7de60877b4db37aecdb7cf818c863">printInterfaces</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> *interfaces, <a class="code" href="structcp__info.html">cp_info</a> *cp, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interfaces_8h.html#aac94a426e29da5419540d2e54e96f7fa">   43</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interfaces_8h.html#aac94a426e29da5419540d2e54e96f7fa">printInterface</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> interface, <a class="code" href="structcp__info.html">cp_info</a> *cp);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interfaces_8h.html#aac94a426e29da5419540d2e54e96f7fa">printInterface</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> interface, <a class="code" href="structcp__info.html">cp_info</a> *cp, <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructcp__info_html"><div class="ttname"><a href="structcp__info.html">cp_info</a></div><div class="ttdoc">Possui um elemento pool de constante.</div><div class="ttdef"><b>Definition:</b> constantPool.h:23</div></div>
+<div class="ttc" id="abaseTypes_8h_html"><div class="ttname"><a href="baseTypes_8h.html">baseTypes.h</a></div><div class="ttdoc">Tipos Base Tipos básicos utilizados para implementarmos a JVM.</div></div>
+<div class="ttc" id="ainterfaces_8h_html_aac94a426e29da5419540d2e54e96f7fa"><div class="ttname"><a href="interfaces_8h.html#aac94a426e29da5419540d2e54e96f7fa">printInterface</a></div><div class="ttdeci">void printInterface(unsigned short interface, cp_info *cp)</div><div class="ttdoc">Mostra informacoes de uma interface especifica.</div></div>
+<div class="ttc" id="aconstantPool_8h_html"><div class="ttname"><a href="constantPool_8h.html">constantPool.h</a></div><div class="ttdoc">Módulo Constant pool.</div></div>
+<div class="ttc" id="ainterfaces_8h_html_a6ec7de60877b4db37aecdb7cf818c863"><div class="ttname"><a href="interfaces_8h.html#a6ec7de60877b4db37aecdb7cf818c863">printInterfaces</a></div><div class="ttdeci">void printInterfaces(unsigned short *interfaces, cp_info *cp, int length)</div><div class="ttdoc">Mostra todas as interfaces do arquivo.</div><div class="ttdef"><b>Definition:</b> interfaces.cpp:27</div></div>
+<div class="ttc" id="ainterfaces_8h_html_ae922cb6cdd2af5a0da3f039d03b230c7"><div class="ttname"><a href="interfaces_8h.html#ae922cb6cdd2af5a0da3f039d03b230c7">readInterfaces</a></div><div class="ttdeci">unsigned short * readInterfaces(FILE *fp, int length)</div><div class="ttdoc">Carrega as interfaces na memoria a partir do arquivo class.</div><div class="ttdef"><b>Definition:</b> interfaces.cpp:11</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

@@ -1,0 +1,129 @@
+\hypertarget{classLocalVariables}{}\doxysection{Referência à classe Local\+Variables}
+\label{classLocalVariables}\index{LocalVariables@{LocalVariables}}
+
+
+Local variables Class.  
+
+
+
+
+{\ttfamily \#include $<$local\+Variables.\+h$>$}
+
+\doxysubsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLocalVariables_ae354d02f996f4f584fe857d9304161c1}{Local\+Variables}} (uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{classLocalVariables}{Local\+Variables}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLocalVariables_aade71d244aca34815b7cab3b0fc57f27}{Local\+Variables}} (uint16\+\_\+t, bool)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{classLocalVariables}{Local\+Variables}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLocalVariables_aaf00f6cc3391fdd2cc0ecd2b1d31c887}\label{classLocalVariables_aaf00f6cc3391fdd2cc0ecd2b1d31c887}} 
+\mbox{\hyperlink{classLocalVariables_aaf00f6cc3391fdd2cc0ecd2b1d31c887}{$\sim$\+Local\+Variables}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLocalVariables_a276a90a0e812a4d54601c7464dc9ee6a}\label{classLocalVariables_a276a90a0e812a4d54601c7464dc9ee6a}} 
+void \mbox{\hyperlink{classLocalVariables_a276a90a0e812a4d54601c7464dc9ee6a}{printall}} () const
+\begin{DoxyCompactList}\small\item\em Funcao para mostrar todos os valores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLocalVariables_ac48ae40b67afb74083ebb1163477a1a6}{set}} (int, \mbox{\hyperlink{structtypedElement__s}{typed\+Element}})
+\begin{DoxyCompactList}\small\item\em Recebe o elemento tipado e insere no indice passado. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtypedElement__s}{typed\+Element}} \mbox{\hyperlink{classLocalVariables_a4abbb4a732d7dd0f11a147b79c15ae10}{get}} (int) const
+\begin{DoxyCompactList}\small\item\em Retorna o elemento tipado no indice passado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLocalVariables_af8d5da296932e0ddb5fcc46fa1a1d7a3}\label{classLocalVariables_af8d5da296932e0ddb5fcc46fa1a1d7a3}} 
+int \mbox{\hyperlink{classLocalVariables_af8d5da296932e0ddb5fcc46fa1a1d7a3}{get\+Max}} () const
+\begin{DoxyCompactList}\small\item\em Funcao para saber o tamanho maximo. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structtypedElement__s}{typed\+Element}} \mbox{\hyperlink{classLocalVariables_a6e978f3c992385f2909261e995105142}{operator\mbox{[}$\,$\mbox{]}}} (const int) const
+\begin{DoxyCompactList}\small\item\em Funcao para usar classe como um vetor de struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Local variables Class. 
+
+Responsible for all operations that envolves the local variables 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
+\mbox{\Hypertarget{classLocalVariables_ae354d02f996f4f584fe857d9304161c1}\label{classLocalVariables_ae354d02f996f4f584fe857d9304161c1}} 
+\index{LocalVariables@{LocalVariables}!LocalVariables@{LocalVariables}}
+\index{LocalVariables@{LocalVariables}!LocalVariables@{LocalVariables}}
+\doxysubsubsection{\texorpdfstring{LocalVariables()}{LocalVariables()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Local\+Variables\+::\+Local\+Variables (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{max\+Size }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{classLocalVariables}{Local\+Variables}}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em max\+Size} & Tamanho maximo da variavel local a ser armazenada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLocalVariables_aade71d244aca34815b7cab3b0fc57f27}\label{classLocalVariables_aade71d244aca34815b7cab3b0fc57f27}} 
+\index{LocalVariables@{LocalVariables}!LocalVariables@{LocalVariables}}
+\index{LocalVariables@{LocalVariables}!LocalVariables@{LocalVariables}}
+\doxysubsubsection{\texorpdfstring{LocalVariables()}{LocalVariables()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Local\+Variables\+::\+Local\+Variables (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{max\+Size,  }\item[{bool}]{slots }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{classLocalVariables}{Local\+Variables}}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em max\+Size} & Tamanho maximo da variavel local a ser armazenada \\
+\hline
+{\em slots} & Se precisa utilizar 2 slots para todos os elementos \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação dos métodos}
+\mbox{\Hypertarget{classLocalVariables_a4abbb4a732d7dd0f11a147b79c15ae10}\label{classLocalVariables_a4abbb4a732d7dd0f11a147b79c15ae10}} 
+\index{LocalVariables@{LocalVariables}!get@{get}}
+\index{get@{get}!LocalVariables@{LocalVariables}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtypedElement__s}{typed\+Element}} Local\+Variables\+::get (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Retorna o elemento tipado no indice passado. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em index} & Indice onde será pego o elemento \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLocalVariables_a6e978f3c992385f2909261e995105142}\label{classLocalVariables_a6e978f3c992385f2909261e995105142}} 
+\index{LocalVariables@{LocalVariables}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!LocalVariables@{LocalVariables}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structtypedElement__s}{typed\+Element}} Local\+Variables\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Funcao para usar classe como um vetor de struct. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em index} & Indice que será acessado para obter o elemento tipado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLocalVariables_ac48ae40b67afb74083ebb1163477a1a6}\label{classLocalVariables_ac48ae40b67afb74083ebb1163477a1a6}} 
+\index{LocalVariables@{LocalVariables}!set@{set}}
+\index{set@{set}!LocalVariables@{LocalVariables}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Local\+Variables\+::set (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{\mbox{\hyperlink{structtypedElement__s}{typed\+Element}}}]{x }\end{DoxyParamCaption})}
+
+
+
+Recebe o elemento tipado e insere no indice passado. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em index} & Indice onde será inserido o elemento \\
+\hline
+{\em x} & Elemento tipado a ser inserido \\
+\hline
+\end{DoxyParams}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{localVariables_8h}{local\+Variables.\+h}}\item 
+src/\mbox{\hyperlink{localVariables_8cpp}{local\+Variables.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,84 @@
+\hypertarget{interfaces_8cpp}{}\doxysection{Referência ao ficheiro src/interfaces.cpp}
+\label{interfaces_8cpp}\index{src/interfaces.cpp@{src/interfaces.cpp}}
+
+
+interfaces  
+
+
+{\ttfamily \#include \char`\"{}interfaces.\+h\char`\"{}}\newline
+Diagrama de dependências de inclusão para interfaces.\+cpp\+:
+% FIG 0
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+unsigned short $\ast$ \mbox{\hyperlink{interfaces_8cpp_a4cfdd916a94be1d8b2accd3fbeb85137}{read\+Interfaces}} (F\+I\+LE $\ast$fp, int length)
+\begin{DoxyCompactList}\small\item\em Carrega as interfaces na memoria a partir do arquivo class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaces_8cpp_a322d540c713562622b3708da7da2bc78}{print\+Interface}} (unsigned short interface, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, int index)
+\begin{DoxyCompactList}\small\item\em Mostra informacao de uma interface especifica com o indice da interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaces_8cpp_a6ec7de60877b4db37aecdb7cf818c863}{print\+Interfaces}} (unsigned short $\ast$interfaces, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, int length)
+\begin{DoxyCompactList}\small\item\em Mostra todas as interfaces do arquivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+interfaces 
+
+
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{interfaces_8cpp_a322d540c713562622b3708da7da2bc78}\label{interfaces_8cpp_a322d540c713562622b3708da7da2bc78}} 
+\index{interfaces.cpp@{interfaces.cpp}!printInterface@{printInterface}}
+\index{printInterface@{printInterface}!interfaces.cpp@{interfaces.cpp}}
+\doxysubsubsection{\texorpdfstring{printInterface()}{printInterface()}}
+{\footnotesize\ttfamily print\+Interface (\begin{DoxyParamCaption}\item[{unsigned short}]{interface,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Mostra informacao de uma interface especifica com o indice da interface. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em interface} & Indice do constantpool. \\
+\hline
+{\em cp} & Ponteiro para o constantpool. \\
+\hline
+{\em index} & Indice da interface especifica. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interfaces_8cpp_a6ec7de60877b4db37aecdb7cf818c863}\label{interfaces_8cpp_a6ec7de60877b4db37aecdb7cf818c863}} 
+\index{interfaces.cpp@{interfaces.cpp}!printInterfaces@{printInterfaces}}
+\index{printInterfaces@{printInterfaces}!interfaces.cpp@{interfaces.cpp}}
+\doxysubsubsection{\texorpdfstring{printInterfaces()}{printInterfaces()}}
+{\footnotesize\ttfamily void print\+Interfaces (\begin{DoxyParamCaption}\item[{unsigned short $\ast$}]{interfaces,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Mostra todas as interfaces do arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em interfaces} & Array de interfaces. \\
+\hline
+{\em cp} & Ponteiro para a constantpool. \\
+\hline
+{\em length} & Numero de interfaces. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interfaces_8cpp_a4cfdd916a94be1d8b2accd3fbeb85137}\label{interfaces_8cpp_a4cfdd916a94be1d8b2accd3fbeb85137}} 
+\index{interfaces.cpp@{interfaces.cpp}!readInterfaces@{readInterfaces}}
+\index{readInterfaces@{readInterfaces}!interfaces.cpp@{interfaces.cpp}}
+\doxysubsubsection{\texorpdfstring{readInterfaces()}{readInterfaces()}}
+{\footnotesize\ttfamily unsigned short $\ast$ read\+Interfaces (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Carrega as interfaces na memoria a partir do arquivo class. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em flags} & Flags em haxadecimal que serao convertidas para string. \\
+\hline
+{\em fp} & Ponteiro para o arquivo class. \\
+\hline
+{\em length} & Numero de interfaces a serem lidas. \\
+\hline
+\end{DoxyParams}

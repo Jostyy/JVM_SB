@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Java Virtual Machine - 01/2020: Código-Fonte de include/pilhaOperandos.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Java Virtual Machine - 01/2020
+   </div>
+   <div id="projectbrief">Projeto desenvolvido pelos alunos: Caio Calixto, Jean Rodrigues, Jonatas Rocha, Marcelo Axel e Rafael Oliveira</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">pilhaOperandos.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="pilhaOperandos_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef PILHAOPERANDOS_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define PILHAOPERANDOS_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stack&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="baseTypes_8h.html">baseTypes.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define INVALID 99</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define TYPE_NOT_SET 0</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define TYPE_INT 1</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define TYPE_FLOAT 2</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define TYPE_LONG 3</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define TYPE_DOUBLE 4</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define TYPE_BOOL 5</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define TYPE_REFERENCE 6</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classPilhaOperandos.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPilhaOperandos.html">PilhaOperandos</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    std::stack&lt;uint32_t&gt; elementos;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::stack&lt;uint8_t&gt; tipos;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::stack&lt;uint8_t&gt; tiposReais;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">bool</span> typePushed;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> bits64 = (<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>*) == 8);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> realMax;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classPilhaOperandos.html#ab17dc4822af4e7e7c0962152d93547c6">PilhaOperandos</a>(<span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    uint8_t <a class="code" href="classPilhaOperandos.html#ab44ede250e434c1bb17f21d787977f20">top_type</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="unionelement__u.html">element</a> <a class="code" href="classPilhaOperandos.html#a2fadf264a2a34fc52f89ef7e1e62f19b">top_value</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="unionelement__u.html">element</a> <a class="code" href="classPilhaOperandos.html#a17a3e3f5e3caad834db7653b2c17ef24">pop</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="structtypedElement__s.html">typedElement</a> popTyped();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::string <a class="code" href="classPilhaOperandos.html#a26d2bb2bcaf156c09ed688958a6f00e2">getString</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// void push(long);</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">push</a>(<span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">push</a>(int64_t);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">push</a>(<span class="keywordtype">float</span>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">push</a>(<span class="keywordtype">double</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">push</a>(<span class="keywordtype">bool</span>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">push</a>(<span class="keywordtype">int</span>*);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">push</a>(<a class="code" href="structtypedElement__s.html">typedElement</a>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">push</a>(<a class="code" href="unionelement__u.html">element</a>, uint8_t);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPilhaOperandos.html#a3db3fb4dd085cd2f7454a92e93b7ad3c">size</a>();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPilhaOperandos.html#a6de0f5994b22c1c0b3d903e233bbf6fe">getMaxSize</a>();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classPilhaOperandos.html#a4099bf8202558794b12086c410da3e16">empty</a>();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">void</span> printALL();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> max;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;};</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassPilhaOperandos_html_a17a3e3f5e3caad834db7653b2c17ef24"><div class="ttname"><a href="classPilhaOperandos.html#a17a3e3f5e3caad834db7653b2c17ef24">PilhaOperandos::pop</a></div><div class="ttdeci">element pop()</div><div class="ttdoc">Desempilha o topo da pilha de operandos e retorna em um elemento de valor.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:49</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html"><div class="ttname"><a href="classPilhaOperandos.html">PilhaOperandos</a></div><div class="ttdoc">Classe da pilha de operandos.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.h:38</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html_ab17dc4822af4e7e7c0962152d93547c6"><div class="ttname"><a href="classPilhaOperandos.html#ab17dc4822af4e7e7c0962152d93547c6">PilhaOperandos::PilhaOperandos</a></div><div class="ttdeci">PilhaOperandos(int)</div><div class="ttdoc">Construtor.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:9</div></div>
+<div class="ttc" id="aunionelement__u_html"><div class="ttname"><a href="unionelement__u.html">element_u</a></div><div class="ttdoc">Generalização de funções de retorno/input Union responsável pela generalização de funções de retorno ...</div><div class="ttdef"><b>Definition:</b> baseTypes.h:62</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html_aebcb6ec63863f3f273f2ded4331de26a"><div class="ttname"><a href="classPilhaOperandos.html#aebcb6ec63863f3f273f2ded4331de26a">PilhaOperandos::push</a></div><div class="ttdeci">void push(int)</div><div class="ttdoc">Empilha um valor de tipo inteiro.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:122</div></div>
+<div class="ttc" id="abaseTypes_8h_html"><div class="ttname"><a href="baseTypes_8h.html">baseTypes.h</a></div><div class="ttdoc">Tipos Base Tipos básicos utilizados para implementarmos a JVM.</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html_a2fadf264a2a34fc52f89ef7e1e62f19b"><div class="ttname"><a href="classPilhaOperandos.html#a2fadf264a2a34fc52f89ef7e1e62f19b">PilhaOperandos::top_value</a></div><div class="ttdeci">element top_value()</div><div class="ttdoc">Recupera o valor do topo da pilha de operandos.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:21</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html_a3db3fb4dd085cd2f7454a92e93b7ad3c"><div class="ttname"><a href="classPilhaOperandos.html#a3db3fb4dd085cd2f7454a92e93b7ad3c">PilhaOperandos::size</a></div><div class="ttdeci">int size()</div><div class="ttdoc">Verifica o tamanho da pilha de operandos.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:322</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html_a4099bf8202558794b12086c410da3e16"><div class="ttname"><a href="classPilhaOperandos.html#a4099bf8202558794b12086c410da3e16">PilhaOperandos::empty</a></div><div class="ttdeci">bool empty()</div><div class="ttdoc">Retorna se a pilha est� vazia (1) ou n�o (0)</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:346</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html_ab44ede250e434c1bb17f21d787977f20"><div class="ttname"><a href="classPilhaOperandos.html#ab44ede250e434c1bb17f21d787977f20">PilhaOperandos::top_type</a></div><div class="ttdeci">uint8_t top_type()</div><div class="ttdoc">Recupera o tipo do topo da pilha de operandos.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:15</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html_a6de0f5994b22c1c0b3d903e233bbf6fe"><div class="ttname"><a href="classPilhaOperandos.html#a6de0f5994b22c1c0b3d903e233bbf6fe">PilhaOperandos::getMaxSize</a></div><div class="ttdeci">int getMaxSize()</div><div class="ttdoc">Retorna o tamanho m�ximo da pilha de operandos.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:316</div></div>
+<div class="ttc" id="astructtypedElement__s_html"><div class="ttname"><a href="structtypedElement__s.html">typedElement_s</a></div><div class="ttdoc">Agregador de tipos e informações. Struct responsável por juntar tipos e informações de elementos.</div><div class="ttdef"><b>Definition:</b> baseTypes.h:86</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html_a26d2bb2bcaf156c09ed688958a6f00e2"><div class="ttname"><a href="classPilhaOperandos.html#a26d2bb2bcaf156c09ed688958a6f00e2">PilhaOperandos::getString</a></div><div class="ttdeci">std::string getString()</div><div class="ttdoc">Retorna o topo da pilha de operandos formatado em uma string.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.cpp:91</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

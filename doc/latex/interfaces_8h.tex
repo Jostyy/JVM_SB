@@ -1,0 +1,107 @@
+\hypertarget{interfaces_8h}{}\doxysection{Referência ao ficheiro include/interfaces.h}
+\label{interfaces_8h}\index{include/interfaces.h@{include/interfaces.h}}
+
+
+Interfaces.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}constant\+Pool.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base\+Types.\+h\char`\"{}}\newline
+Diagrama de dependências de inclusão para interfaces.\+h\+:
+% FIG 0
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:
+% FIG 1
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+unsigned short $\ast$ \mbox{\hyperlink{interfaces_8h_ae922cb6cdd2af5a0da3f039d03b230c7}{read\+Interfaces}} (F\+I\+LE $\ast$fp, int length)
+\begin{DoxyCompactList}\small\item\em Carrega as interfaces na memoria a partir do arquivo class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaces_8h_a6ec7de60877b4db37aecdb7cf818c863}{print\+Interfaces}} (unsigned short $\ast$interfaces, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, int length)
+\begin{DoxyCompactList}\small\item\em Mostra todas as interfaces do arquivo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaces_8h_aac94a426e29da5419540d2e54e96f7fa}{print\+Interface}} (unsigned short interface, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp)
+\begin{DoxyCompactList}\small\item\em Mostra informacoes de uma interface especifica. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaces_8h_aecd49471b21a9c29d2f88f757b1734ad}{print\+Interface}} (unsigned short interface, \mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, int index)
+\begin{DoxyCompactList}\small\item\em Mostra informacao de uma interface especifica com o indice da interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Interfaces. 
+
+Manipula as informacoes de interface do .class 
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{interfaces_8h_aac94a426e29da5419540d2e54e96f7fa}\label{interfaces_8h_aac94a426e29da5419540d2e54e96f7fa}} 
+\index{interfaces.h@{interfaces.h}!printInterface@{printInterface}}
+\index{printInterface@{printInterface}!interfaces.h@{interfaces.h}}
+\doxysubsubsection{\texorpdfstring{printInterface()}{printInterface()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily print\+Interface (\begin{DoxyParamCaption}\item[{unsigned short}]{interface,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp }\end{DoxyParamCaption})}
+
+
+
+Mostra informacoes de uma interface especifica. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em interface} & Indice do constantpool. \\
+\hline
+{\em cp} & Ponteiro para a constantpool. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interfaces_8h_aecd49471b21a9c29d2f88f757b1734ad}\label{interfaces_8h_aecd49471b21a9c29d2f88f757b1734ad}} 
+\index{interfaces.h@{interfaces.h}!printInterface@{printInterface}}
+\index{printInterface@{printInterface}!interfaces.h@{interfaces.h}}
+\doxysubsubsection{\texorpdfstring{printInterface()}{printInterface()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void print\+Interface (\begin{DoxyParamCaption}\item[{unsigned short}]{interface,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Mostra informacao de uma interface especifica com o indice da interface. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em interface} & Indice do constantpool. \\
+\hline
+{\em cp} & Ponteiro para o constantpool. \\
+\hline
+{\em index} & Indice da interface especifica. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interfaces_8h_a6ec7de60877b4db37aecdb7cf818c863}\label{interfaces_8h_a6ec7de60877b4db37aecdb7cf818c863}} 
+\index{interfaces.h@{interfaces.h}!printInterfaces@{printInterfaces}}
+\index{printInterfaces@{printInterfaces}!interfaces.h@{interfaces.h}}
+\doxysubsubsection{\texorpdfstring{printInterfaces()}{printInterfaces()}}
+{\footnotesize\ttfamily void print\+Interfaces (\begin{DoxyParamCaption}\item[{unsigned short $\ast$}]{interfaces,  }\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{cp,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Mostra todas as interfaces do arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em interfaces} & Array de interfaces. \\
+\hline
+{\em cp} & Ponteiro para a constantpool. \\
+\hline
+{\em length} & Numero de interfaces. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interfaces_8h_ae922cb6cdd2af5a0da3f039d03b230c7}\label{interfaces_8h_ae922cb6cdd2af5a0da3f039d03b230c7}} 
+\index{interfaces.h@{interfaces.h}!readInterfaces@{readInterfaces}}
+\index{readInterfaces@{readInterfaces}!interfaces.h@{interfaces.h}}
+\doxysubsubsection{\texorpdfstring{readInterfaces()}{readInterfaces()}}
+{\footnotesize\ttfamily unsigned short$\ast$ read\+Interfaces (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Carrega as interfaces na memoria a partir do arquivo class. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em flags} & Flags em haxadecimal que serao convertidas para string. \\
+\hline
+{\em fp} & Ponteiro para o arquivo class. \\
+\hline
+{\em length} & Numero de interfaces a serem lidas. \\
+\hline
+\end{DoxyParams}

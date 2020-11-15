@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Java Virtual Machine - 01/2020: Código-Fonte de include/frame.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Java Virtual Machine - 01/2020
+   </div>
+   <div id="projectbrief">Projeto desenvolvido pelos alunos: Caio Calixto, Jean Rodrigues, Jonatas Rocha, Marcelo Axel e Rafael Oliveira</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">frame.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="frame_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef FRAME_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define FRAME_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">class </span><a class="code" href="classFrameStack.html">FrameStack</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="classeLeitor_8h.html">classeLeitor.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pilhaOperandos_8h.html">pilhaOperandos.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="localVariables_8h.html">localVariables.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="baseTypes_8h.html">baseTypes.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="operacoes_8h.html">operacoes.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="attributes_8h.html">attributes.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="methodArea_8h.html">methodArea.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structframe__s.html">   30</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structframe__s.html">frame_s</a>{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *pc;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="structcp__info.html">cp_info</a> *cp;    </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classPilhaOperandos.html">PilhaOperandos</a> *operandos;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classLocalVariables.html">LocalVariables</a> *locals;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="structmethod__info.html">method_info</a> m;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} <a class="code" href="structframe__s.html">frame</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classFrameStack.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFrameStack.html">FrameStack</a> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::stack&lt;frame*&gt; threads;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">bool</span> nextInstruction();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> opcode;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> startPC(<a class="code" href="structframe__s.html">frame</a>*);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classFrameStack.html#aaa727d2a58e24e6f02f1cd358a804981">FrameStack</a> (<a class="code" href="classLeitor.html">Leitor</a>*);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFrameStack.html#af06f3e125bea380e017afd14fb6b14a3">setArguments</a>(std::vector&lt;typedElement&gt;);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFrameStack.html#a9ad510705082a0055eb03e9cbea295f3">execute</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFrameStack.html#aefe44d87f18ddf549ca64416569f7a40">addFrame</a>(<a class="code" href="structmethod__info.html">method_info</a>, <a class="code" href="structcp__info.html">cp_info</a>*);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFrameStack.html#aefe44d87f18ddf549ca64416569f7a40">addFrame</a>(<a class="code" href="structmethod__info.html">method_info</a>*, <a class="code" href="structcp__info.html">cp_info</a>*);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFrameStack.html#a7da31bde9fe2f7cf6a4e2497445223a5">pop</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;};</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassFrameStack_html_a9ad510705082a0055eb03e9cbea295f3"><div class="ttname"><a href="classFrameStack.html#a9ad510705082a0055eb03e9cbea295f3">FrameStack::execute</a></div><div class="ttdeci">void execute()</div><div class="ttdoc">Executa o método atual e os métodos chamados.</div><div class="ttdef"><b>Definition:</b> frame.cpp:24</div></div>
+<div class="ttc" id="aclassFrameStack_html"><div class="ttname"><a href="classFrameStack.html">FrameStack</a></div><div class="ttdoc">Classe de pilha de frames.</div><div class="ttdef"><b>Definition:</b> frame.h:44</div></div>
+<div class="ttc" id="aclassFrameStack_html_aaa727d2a58e24e6f02f1cd358a804981"><div class="ttname"><a href="classFrameStack.html#aaa727d2a58e24e6f02f1cd358a804981">FrameStack::FrameStack</a></div><div class="ttdeci">FrameStack(Leitor *)</div><div class="ttdoc">Contrutor da pilha de frame.</div><div class="ttdef"><b>Definition:</b> frame.cpp:8</div></div>
+<div class="ttc" id="aclassFrameStack_html_a7da31bde9fe2f7cf6a4e2497445223a5"><div class="ttname"><a href="classFrameStack.html#a7da31bde9fe2f7cf6a4e2497445223a5">FrameStack::pop</a></div><div class="ttdeci">void pop()</div><div class="ttdoc">Dá um pop no método atual.</div><div class="ttdef"><b>Definition:</b> frame.cpp:53</div></div>
+<div class="ttc" id="aclassPilhaOperandos_html"><div class="ttname"><a href="classPilhaOperandos.html">PilhaOperandos</a></div><div class="ttdoc">Classe da pilha de operandos.</div><div class="ttdef"><b>Definition:</b> pilhaOperandos.h:38</div></div>
+<div class="ttc" id="aclassFrameStack_html_af06f3e125bea380e017afd14fb6b14a3"><div class="ttname"><a href="classFrameStack.html#af06f3e125bea380e017afd14fb6b14a3">FrameStack::setArguments</a></div><div class="ttdeci">void setArguments(std::vector&lt; typedElement &gt;)</div><div class="ttdoc">Configura os argumentos.</div><div class="ttdef"><b>Definition:</b> frame.cpp:97</div></div>
+<div class="ttc" id="aclassFrameStack_html_aefe44d87f18ddf549ca64416569f7a40"><div class="ttname"><a href="classFrameStack.html#aefe44d87f18ddf549ca64416569f7a40">FrameStack::addFrame</a></div><div class="ttdeci">void addFrame(method_info, cp_info *)</div><div class="ttdoc">Adiciona um frame no topo da pilha.</div><div class="ttdef"><b>Definition:</b> frame.cpp:74</div></div>
+<div class="ttc" id="astructcp__info_html"><div class="ttname"><a href="structcp__info.html">cp_info</a></div><div class="ttdoc">Possui um elemento pool de constante.</div><div class="ttdef"><b>Definition:</b> constantPool.h:23</div></div>
+<div class="ttc" id="astructmethod__info_html"><div class="ttname"><a href="structmethod__info.html">method_info</a></div><div class="ttdef"><b>Definition:</b> methods.h:20</div></div>
+<div class="ttc" id="abaseTypes_8h_html"><div class="ttname"><a href="baseTypes_8h.html">baseTypes.h</a></div><div class="ttdoc">Tipos Base Tipos básicos utilizados para implementarmos a JVM.</div></div>
+<div class="ttc" id="amethodArea_8h_html"><div class="ttname"><a href="methodArea_8h.html">methodArea.h</a></div><div class="ttdoc">Area de Metodo.</div></div>
+<div class="ttc" id="aclassLocalVariables_html"><div class="ttname"><a href="classLocalVariables.html">LocalVariables</a></div><div class="ttdoc">Local variables Class.</div><div class="ttdef"><b>Definition:</b> localVariables.h:42</div></div>
+<div class="ttc" id="aattributes_8h_html"><div class="ttname"><a href="attributes_8h.html">attributes.h</a></div><div class="ttdoc">Atributos a serem usados na execuçao da JVM.</div></div>
+<div class="ttc" id="aclasseLeitor_8h_html"><div class="ttname"><a href="classeLeitor_8h.html">classeLeitor.h</a></div></div>
+<div class="ttc" id="astructframe__s_html"><div class="ttname"><a href="structframe__s.html">frame_s</a></div><div class="ttdoc">Estrutura de armazenamento.</div><div class="ttdef"><b>Definition:</b> frame.h:30</div></div>
+<div class="ttc" id="aoperacoes_8h_html"><div class="ttname"><a href="operacoes_8h.html">operacoes.h</a></div><div class="ttdoc">Lista das operacoes realizadas pela jvm.</div></div>
+<div class="ttc" id="aclassLeitor_html"><div class="ttname"><a href="classLeitor.html">Leitor</a></div><div class="ttdef"><b>Definition:</b> classeLeitor.h:48</div></div>
+<div class="ttc" id="apilhaOperandos_8h_html"><div class="ttname"><a href="pilhaOperandos_8h.html">pilhaOperandos.h</a></div><div class="ttdoc">Pilha de operandos.</div></div>
+<div class="ttc" id="alocalVariables_8h_html"><div class="ttname"><a href="localVariables_8h.html">localVariables.h</a></div><div class="ttdoc">Local Variables.</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

@@ -1,0 +1,115 @@
+\hypertarget{classClasseEstatica}{}\doxysection{Referência à classe Classe\+Estatica}
+\label{classClasseEstatica}\index{ClasseEstatica@{ClasseEstatica}}
+
+
+Fields Estáticos compartilhados por todas as instâncias.  
+
+
+
+
+{\ttfamily \#include $<$classe.\+h$>$}
+
+\doxysubsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classClasseEstatica_a4e584d8a91a0f7c5ce9a64a78bbb1f50}{Classe\+Estatica}} (\mbox{\hyperlink{classLeitor}{Leitor}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Construtor da \mbox{\hyperlink{classClasseEstatica}{Classe\+Estatica}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtypedElement__s}{typed\+Element}} \mbox{\hyperlink{classClasseEstatica_ae85fd5cef4bbed1294562e497a6611a7}{get\+Field}} (string)
+\begin{DoxyCompactList}\small\item\em Retorna o field estático. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classClasseEstatica_acc2669d695a4f733ec61f2c77eb92920}{set\+Field}} (string, \mbox{\hyperlink{structtypedElement__s}{typed\+Element}})
+\begin{DoxyCompactList}\small\item\em Define um field estático. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classClasseEstatica_a58dcce56287bc06d3e076382ec85df09}{set\+Finals}} (string, \mbox{\hyperlink{structtypedElement__s}{typed\+Element}})
+\begin{DoxyCompactList}\small\item\em Marca campo como final. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClasseEstatica_a426c3626c527013a975a80146394364a}\label{classClasseEstatica_a426c3626c527013a975a80146394364a}} 
+\mbox{\hyperlink{classClasseInstancia}{Classe\+Instancia}} $\ast$ \mbox{\hyperlink{classClasseEstatica_a426c3626c527013a975a80146394364a}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a instância da classe. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClasseEstatica_a5cf4c48a80b40143af26acde5f802776}\label{classClasseEstatica_a5cf4c48a80b40143af26acde5f802776}} 
+\mbox{\hyperlink{classLeitor}{Leitor}} $\ast$ \mbox{\hyperlink{classClasseEstatica_a5cf4c48a80b40143af26acde5f802776}{get\+Def}} ()
+\begin{DoxyCompactList}\small\item\em Retorna as informações do class file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Membros públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classClasseEstatica_a21a7549363d10b8eeba7603250b1f5d3}\label{classClasseEstatica_a21a7549363d10b8eeba7603250b1f5d3}} 
+static void \mbox{\hyperlink{classClasseEstatica_a21a7549363d10b8eeba7603250b1f5d3}{add\+Object}} (\mbox{\hyperlink{classClasseInstancia}{Classe\+Instancia}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Adiciona um objeto da classe instancia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Fields Estáticos compartilhados por todas as instâncias. 
+
+Define operações que manipulam classes estáticas 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
+\mbox{\Hypertarget{classClasseEstatica_a4e584d8a91a0f7c5ce9a64a78bbb1f50}\label{classClasseEstatica_a4e584d8a91a0f7c5ce9a64a78bbb1f50}} 
+\index{ClasseEstatica@{ClasseEstatica}!ClasseEstatica@{ClasseEstatica}}
+\index{ClasseEstatica@{ClasseEstatica}!ClasseEstatica@{ClasseEstatica}}
+\doxysubsubsection{\texorpdfstring{ClasseEstatica()}{ClasseEstatica()}}
+{\footnotesize\ttfamily Classe\+Estatica\+::\+Classe\+Estatica (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLeitor}{Leitor}} $\ast$}]{classe\+Lida }\end{DoxyParamCaption})}
+
+
+
+Construtor da \mbox{\hyperlink{classClasseEstatica}{Classe\+Estatica}}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \mbox{\hyperlink{classLeitor}{Leitor}}} & informação do class file já carregada na memória \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação dos métodos}
+\mbox{\Hypertarget{classClasseEstatica_ae85fd5cef4bbed1294562e497a6611a7}\label{classClasseEstatica_ae85fd5cef4bbed1294562e497a6611a7}} 
+\index{ClasseEstatica@{ClasseEstatica}!getField@{getField}}
+\index{getField@{getField}!ClasseEstatica@{ClasseEstatica}}
+\doxysubsubsection{\texorpdfstring{getField()}{getField()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtypedElement__s}{typed\+Element}} Classe\+Estatica\+::get\+Field (\begin{DoxyParamCaption}\item[{string}]{s }\end{DoxyParamCaption})}
+
+
+
+Retorna o field estático. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em s} & nome da class. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classClasseEstatica_acc2669d695a4f733ec61f2c77eb92920}\label{classClasseEstatica_acc2669d695a4f733ec61f2c77eb92920}} 
+\index{ClasseEstatica@{ClasseEstatica}!setField@{setField}}
+\index{setField@{setField}!ClasseEstatica@{ClasseEstatica}}
+\doxysubsubsection{\texorpdfstring{setField()}{setField()}}
+{\footnotesize\ttfamily bool Classe\+Estatica\+::set\+Field (\begin{DoxyParamCaption}\item[{string}]{s,  }\item[{\mbox{\hyperlink{structtypedElement__s}{typed\+Element}}}]{e }\end{DoxyParamCaption})}
+
+
+
+Define um field estático. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em s} & Nome da Classe. \\
+\hline
+{\em e} & Valor que será setado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classClasseEstatica_a58dcce56287bc06d3e076382ec85df09}\label{classClasseEstatica_a58dcce56287bc06d3e076382ec85df09}} 
+\index{ClasseEstatica@{ClasseEstatica}!setFinals@{setFinals}}
+\index{setFinals@{setFinals}!ClasseEstatica@{ClasseEstatica}}
+\doxysubsubsection{\texorpdfstring{setFinals()}{setFinals()}}
+{\footnotesize\ttfamily bool Classe\+Estatica\+::set\+Finals (\begin{DoxyParamCaption}\item[{string}]{s,  }\item[{\mbox{\hyperlink{structtypedElement__s}{typed\+Element}}}]{e }\end{DoxyParamCaption})}
+
+
+
+Marca campo como final. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em s} & Nome da classe. \\
+\hline
+{\em e} & Valor que vai ser definido. \\
+\hline
+\end{DoxyParams}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{classe_8h}{classe.\+h}}\item 
+src/\mbox{\hyperlink{classe_8cpp}{classe.\+cpp}}\end{DoxyCompactItemize}

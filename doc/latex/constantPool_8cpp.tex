@@ -1,0 +1,48 @@
+\hypertarget{constantPool_8cpp}{}\doxysection{Referência ao ficheiro src/constant\+Pool.cpp}
+\label{constantPool_8cpp}\index{src/constantPool.cpp@{src/constantPool.cpp}}
+
+
+constant\+Pool  
+
+
+{\ttfamily \#include \char`\"{}constant\+Pool.\+h\char`\"{}}\newline
+Diagrama de dependências de inclusão para constant\+Pool.\+cpp\+:
+% FIG 0
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{constantPool_8cpp_ad58013744f2dbde35519b4bb4549a493}{print\+Constant\+Pool}} (\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$constant\+Pool, int tamanho\+CP)
+\begin{DoxyCompactList}\small\item\em Imprime o pool de constantes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constantPool_8cpp_a535d3072739208def76d774000fa3973}\label{constantPool_8cpp_a535d3072739208def76d774000fa3973}} 
+int {\bfseries load\+Constant\+Pool} (\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$constant\+Pool, int tamanho\+CP, F\+I\+LE $\ast$fp)
+\item 
+\mbox{\Hypertarget{constantPool_8cpp_a6dd2d879553b6befe97b4c72dceaff7e}\label{constantPool_8cpp_a6dd2d879553b6befe97b4c72dceaff7e}} 
+string {\bfseries get\+Path\+Reference\+Index} (\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$cp, U2 index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+constant\+Pool 
+
+
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{constantPool_8cpp_ad58013744f2dbde35519b4bb4549a493}\label{constantPool_8cpp_ad58013744f2dbde35519b4bb4549a493}} 
+\index{constantPool.cpp@{constantPool.cpp}!printConstantPool@{printConstantPool}}
+\index{printConstantPool@{printConstantPool}!constantPool.cpp@{constantPool.cpp}}
+\doxysubsubsection{\texorpdfstring{printConstantPool()}{printConstantPool()}}
+{\footnotesize\ttfamily void print\+Constant\+Pool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcp__info}{cp\+\_\+info}} $\ast$}]{constant\+Pool,  }\item[{int}]{length\+CP }\end{DoxyParamCaption})}
+
+
+
+Imprime o pool de constantes. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em constant\+Pool} & -\/ um ponteiro para o pool de contantes \\
+\hline
+{\em length\+CP} & -\/ o tamanho do pool de constantes \\
+\hline
+\end{DoxyParams}
+\hypertarget{constantPool_8cpp_desc}{}\doxysubsection{Descrição}\label{constantPool_8cpp_desc}
+Função responsável por imprimir na tela o pool de constantes e todos os campos a ele relacionados 
