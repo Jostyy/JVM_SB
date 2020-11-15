@@ -1,3 +1,8 @@
+/*!
+ * \file classFlags.cpp
+ * \brief classFlags
+ */
+
 #include "classFlags.h"
 
 void showFlags (U2 acessoFlags){

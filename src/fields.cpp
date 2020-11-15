@@ -1,3 +1,8 @@
+/*!
+ * \file fields.cpp
+ * \brief fields
+ */
+
 #include "fields.h"
 
 string getFieldFlags(unsigned short flags){

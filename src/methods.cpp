@@ -1,3 +1,8 @@
+/*!
+ * \file methods.cpp
+ * \brief methods
+ */
+
 #include "methods.h"
 
 method_info read_Method (FILE* fp,cp_info *cp){

@@ -1,3 +1,8 @@
+/*!
+ * \file classeLeitor.cpp
+ * \brief classeLeitor
+ */
+
 #include "classeLeitor.h"
 
 

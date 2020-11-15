@@ -49,6 +49,8 @@ $(OBJECTS): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp
 
 
 
+.PHONY: docs
+docs: doxygen Doxyfile
 
 .PHONY: clean
 clean: clean_obj clean_bin

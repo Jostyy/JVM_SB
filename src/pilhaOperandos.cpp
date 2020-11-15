@@ -1,3 +1,8 @@
+/*!
+ * \file pilhaOperandos.cpp
+ * \brief Pilha de Operandos
+ */
+
 #include "pilhaOperandos.h"
 
 

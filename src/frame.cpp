@@ -1,3 +1,8 @@
+/*!
+ * \file frame.cpp
+ * \brief frame
+ */
+
 #include "frame.h"
 
 FrameStack::FrameStack (Leitor *l){

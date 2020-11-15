@@ -1,3 +1,8 @@
+/*!
+ * \file classe.cpp
+ * \brief classe
+ */
+
 #include "classe.h"
 #include "pilhaOperandos.h"
 

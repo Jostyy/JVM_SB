@@ -1,3 +1,12 @@
+/** \file operacoes.h
+*	\brief Lista das operacoes realizadas pela jvm
+*/
+
+/*! \def OPERACOES_H
+	\brief Macro
+
+	Define uso para evitar a inclusão múltipla de arquivos.
+*/
 #ifndef OPERACOES_H
 #define OPERACOES_H
 
@@ -11,8 +20,21 @@ typedef void (*fun)(void);
 
 class Operacoes {
 private:
+	/*! \fn uint32_t getNBytesValue(uint8_t n, unsigned char** code)
+		\brief Funcao que retorna um valor de n bytes
+
+		\param n Define quantas posicoes serão deslocadas e quantos bytes serão lidos		
+		\param pc Ponteiro para PC
+	*/
 	static uint32_t getNBytesValue(uint8_t n, unsigned char** pc);
 
+
+	/*! \fn ClasseEstatica* getStaticClassThatHasField(ClasseEstatica* base, string field_name)
+		\brief Busca recursiva por uma classe estatica que contém um field especifico
+
+		\param base Classe estatica utilizada para busca, caso o campo nao seja encontrado nessa classe, vai para SuperClasse.
+		\param field_name Nome do field que esta procurando
+	*/
 	static ClasseEstatica* getStaticClassThatHasField(ClasseEstatica* base, string field_name);
 
 	static n_array* getNewMultiArray(stack<int> count_dim);

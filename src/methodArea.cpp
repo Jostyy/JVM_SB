@@ -1,3 +1,8 @@
+/*!
+ * \file methodArea.cpp
+ * \brief methodsArea
+ */
+
 #include "methodArea.h"
 
 map<string, ClasseEstatica*> MethodArea::classes;

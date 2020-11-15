@@ -1,3 +1,8 @@
+/*!
+ * \file localVariables.cpp
+ * \brief localVariables
+ */
+
 #include "localVariables.h"
 
 LocalVariables::LocalVariables (uint16_t maxSize) : max(maxSize), realMax(2*maxSize), dois(false){
