@@ -127,8 +127,12 @@ Leitor *ClasseEstatica::getDef(){
 }
 
 ClasseInstancia::ClasseInstancia(ClasseEstatica* c){
-	this->classe = c;
+	if(c == 0x0000000000000000){
+		// printf("Nao e possivel instanciar uma classe estatica\n");
+		return;
+	}
 
+	this->classe = c;
 	int count = classe->getDef()->getFieldsCount();
 	field_info *fields = classe->getDef()->getFields();
 	for (int i = 0; i < count; i++)
