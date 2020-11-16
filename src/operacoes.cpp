@@ -9,6 +9,7 @@ frame *Operacoes::f = nullptr;
 stack<struct frame_s*> *Operacoes::threads = nullptr;
 FrameStack *Operacoes::fs = nullptr;
 bool Operacoes::isWide = false;
+int t = 0;
 
 const fun Operacoes::functions[] =
 {
@@ -2618,7 +2619,15 @@ void Operacoes::invokevirtual()
                         printf("%ld", element.value.ls);
                         break;
                     case RT_REFERENCE:
-                        cout << showUTF8((unsigned char *)element.value.pi, 0);
+						if(t >0){
+							for(int i = 0; i < t; i++){
+								printf("%c", element.value.pi[i]);
+							}
+							printf("\n");
+							t = 0;
+						}else{
+							cout << showUTF8((unsigned char *)element.value.pi, 0);
+						}
                         break;
                     case RT_BOOL:
                         printf("%s", element.value.b == 0 ? "false" : "true");
@@ -2687,6 +2696,36 @@ void Operacoes::invokevirtual()
                     ret.value.b = 0;
                 }
 
+                f->operandos->push(ret);
+            }
+            else 
+            {
+            	throw std::runtime_error("Dados Invalidos.");
+            }
+
+        } else if ((class_name.find("java/lang/String") != string::npos) && (name == "concat" || name == "append"))
+		{
+
+            typedElement element_1 = f->operandos->popTyped();
+            typedElement element_2 = f->operandos->popTyped();
+
+            if(element_1.realType == RT_REFERENCE && element_2.realType == RT_REFERENCE)
+			{
+                typedElement ret;
+                ret.type = TYPE_REFERENCE;
+                ret.realType = TYPE_REFERENCE;
+
+				std::string str1 = showUTF8((unsigned char *)element_2.value.pi, 0) + showUTF8((unsigned char *)element_1.value.pi, 0);
+				std::vector<char> str2(str1.begin(), str2.end());
+				
+				t = str2.size();
+				int * data = (int *)malloc(t * sizeof(int));
+                
+				for(int i = 0; i < t; i++){
+					data[i] = (int)str2[i];
+				}
+
+				ret.value.pi = data;
                 f->operandos->push(ret);
             }
             else 
