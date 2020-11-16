@@ -2594,6 +2594,10 @@ void Operacoes::invokevirtual()
     string descriptor = getPathReferenceIndex(f->cp, name_and_type_element.info[1].u2);
 
 
+    if (class_name.find("Exception") != string::npos){
+        // typedElement element = f->operandos->pop();
+        throw std::runtime_error("Exception");
+	}
     if (class_name.find("java/") != string::npos)
 	{
     
